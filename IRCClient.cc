@@ -165,6 +165,9 @@ void update_list_users() {
 	char * temp = (char *) malloc (30 * sizeof(char));
 	gchar *msg;
 
+	// Clear rooms list
+	gtk_list_store_clear(GTK_LIST_STORE (list_rooms));
+
 	//Add some messages to the window
 	if (user_exist == 1) {    	
 		char responseuser[ MAX_RESPONSE ] = {0};
@@ -178,16 +181,19 @@ void update_list_users() {
 				msg = g_strdup_printf ("%s", temp);
     				gtk_list_store_append (GTK_LIST_STORE (list_users), &iterator);
     				gtk_list_store_set (GTK_LIST_STORE (list_users), &iterator, 0, msg, -1);
+				printf("User: %s\n", msg);	        
 			}
 
 			while ((temp = strtok(NULL, "\r\n")) != NULL) {
 				msg = g_strdup_printf ("%s", temp);
 	       			gtk_list_store_append (GTK_LIST_STORE (list_users), &iterator);
 	        		gtk_list_store_set (GTK_LIST_STORE (list_users), &iterator, 0, msg, -1);
+				printf("User: %s\n", msg);	        
 			}
 		}
 
 	}
+	free(temp);
 }
 
 static void update_list_messages() {
