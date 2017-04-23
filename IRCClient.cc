@@ -213,7 +213,7 @@ static void update_list_messages() {
 		}
 
 	}
-	free (buffer);
+//	free (buffer);
 }
 
 static void get_messages() {

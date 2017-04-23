@@ -1,0 +1,245 @@
+Sun Apr 23 00:12:28 EDT 2017
++r
+Starting program: /u/data/u89/wang2226/cs240/lab11-src/IRCClient 
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib64/libthread_db.so.1".
+[Inferior 1 (process 29015) exited with code 0377]
++r 1234
+Starting program: /u/data/u89/wang2226/cs240/lab11-src/IRCClient 1234
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib64/libthread_db.so.1".
+[New Thread 0x7fffef578700 (LWP 29271)]
+[New Thread 0x7fffeed77700 (LWP 29272)]
+
+Program received signal SIGSEGV, Segmentation fault.
+0x00007ffff4b2378f in _int_free () from /lib64/libc.so.6
++where
+#0  0x00007ffff4b2378f in _int_free () from /lib64/libc.so.6
+#1  0x00007ffff7511928 in gdk_region_subtract ()
+   from /usr/lib64/libgdk-x11-2.0.so.0
+#2  0x00007ffff75187a8 in ?? () from /usr/lib64/libgdk-x11-2.0.so.0
+#3  0x00007ffff75213b4 in ?? () from /usr/lib64/libgdk-x11-2.0.so.0
+#4  0x00007ffff75211d9 in ?? () from /usr/lib64/libgdk-x11-2.0.so.0
+#5  0x00007ffff7524b08 in ?? () from /usr/lib64/libgdk-x11-2.0.so.0
+#6  0x00007ffff79c0469 in ?? () from /usr/lib64/libgtk-x11-2.0.so.0
+#7  0x00007ffff6139f2e in g_cclosure_marshal_VOID__BOXEDv ()
+   from /usr/lib64/libgobject-2.0.so.0
+#8  0x00007ffff61370f2 in ?? () from /usr/lib64/libgobject-2.0.so.0
+#9  0x00007ffff6151657 in g_signal_emit_valist ()
+   from /usr/lib64/libgobject-2.0.so.0
+#10 0x00007ffff6151fc7 in g_signal_emit () from /usr/lib64/libgobject-2.0.so.0
+#11 0x00007ffff79e06a5 in gtk_widget_size_allocate ()
+   from /usr/lib64/libgtk-x11-2.0.so.0
+#12 0x00007ffff7925d0d in ?? () from /usr/lib64/libgtk-x11-2.0.so.0
+#13 0x00007ffff6139f2e in g_cclosure_marshal_VOID__BOXEDv ()
+   from /usr/lib64/libgobject-2.0.so.0
+#14 0x00007ffff61370f2 in ?? () from /usr/lib64/libgobject-2.0.so.0
+#15 0x00007ffff6151657 in g_signal_emit_valist ()
+   from /usr/lib64/libgobject-2.0.so.0
+#16 0x00007ffff6151fc7 in g_signal_emit () from /usr/lib64/libgobject-2.0.so.0
+#17 0x00007ffff79e06a5 in gtk_widget_size_allocate ()
+   from /usr/lib64/libgtk-x11-2.0.so.0
+#18 0x00007ffff794adc1 in ?? () from /usr/lib64/libgtk-x11-2.0.so.0
+#19 0x00007ffff6139f2e in g_cclosure_marshal_VOID__BOXEDv ()
+   from /usr/lib64/libgobject-2.0.so.0
+#20 0x00007ffff61370f2 in ?? () from /usr/lib64/libgobject-2.0.so.0
+#21 0x00007ffff6151657 in g_signal_emit_valist ()
+   from /usr/lib64/libgobject-2.0.so.0
+#22 0x00007ffff6151fc7 in g_signal_emit () from /usr/lib64/libgobject-2.0.so.0
+#23 0x00007ffff79e06a5 in gtk_widget_size_allocate ()
+   from /usr/lib64/libgtk-x11-2.0.so.0
+#24 0x00007ffff79e9f4a in ?? () from /usr/lib64/libgtk-x11-2.0.so.0
+#25 0x00007ffff6139f2e in g_cclosure_marshal_VOID__BOXEDv ()
+   from /usr/lib64/libgobject-2.0.so.0
+#26 0x00007ffff61371a4 in ?? () from /usr/lib64/libgobject-2.0.so.0
+#27 0x00007ffff6151657 in g_signal_emit_valist ()
+   from /usr/lib64/libgobject-2.0.so.0
+#28 0x00007ffff6151fc7 in g_signal_emit () from /usr/lib64/libgobject-2.0.so.0
+#29 0x00007ffff79e06a5 in gtk_widget_size_allocate ()
+   from /usr/lib64/libgtk-x11-2.0.so.0
+#30 0x00007ffff79eb03e in ?? () from /usr/lib64/libgtk-x11-2.0.so.0
+#31 0x00007ffff61371a4 in ?? () from /usr/lib64/libgobject-2.0.so.0
+#32 0x00007ffff6151657 in g_signal_emit_valist ()
+   from /usr/lib64/libgobject-2.0.so.0
+#33 0x00007ffff6151fc7 in g_signal_emit () from /usr/lib64/libgobject-2.0.so.0
+#34 0x00007ffff7849790 in ?? () from /usr/lib64/libgtk-x11-2.0.so.0
+#35 0x00007ffff74fc5a7 in ?? () from /usr/lib64/libgdk-x11-2.0.so.0
+#36 0x00007ffff5e36bad in g_main_context_dispatch ()
+   from /usr/lib64/libglib-2.0.so.0
+#37 0x00007ffff5e36f80 in ?? () from /usr/lib64/libglib-2.0.so.0
+#38 0x00007ffff5e372a2 in g_main_loop_run () from /usr/lib64/libglib-2.0.so.0
+#39 0x00007ffff78c3137 in gtk_main () from /usr/lib64/libgtk-x11-2.0.so.0
+#40 0x000000000040454f in main (argc=2, argv=0x7fffffffe568)
+    at IRCClient.cc:598
++where
+#0  0x00007ffff4b2378f in _int_free () from /lib64/libc.so.6
+#1  0x00007ffff7511928 in gdk_region_subtract ()
+   from /usr/lib64/libgdk-x11-2.0.so.0
+#2  0x00007ffff75187a8 in ?? () from /usr/lib64/libgdk-x11-2.0.so.0
+#3  0x00007ffff75213b4 in ?? () from /usr/lib64/libgdk-x11-2.0.so.0
+#4  0x00007ffff75211d9 in ?? () from /usr/lib64/libgdk-x11-2.0.so.0
+#5  0x00007ffff7524b08 in ?? () from /usr/lib64/libgdk-x11-2.0.so.0
+#6  0x00007ffff79c0469 in ?? () from /usr/lib64/libgtk-x11-2.0.so.0
+#7  0x00007ffff6139f2e in g_cclosure_marshal_VOID__BOXEDv ()
+   from /usr/lib64/libgobject-2.0.so.0
+#8  0x00007ffff61370f2 in ?? () from /usr/lib64/libgobject-2.0.so.0
+#9  0x00007ffff6151657 in g_signal_emit_valist ()
+   from /usr/lib64/libgobject-2.0.so.0
+#10 0x00007ffff6151fc7 in g_signal_emit () from /usr/lib64/libgobject-2.0.so.0
+#11 0x00007ffff79e06a5 in gtk_widget_size_allocate ()
+   from /usr/lib64/libgtk-x11-2.0.so.0
+#12 0x00007ffff7925d0d in ?? () from /usr/lib64/libgtk-x11-2.0.so.0
+#13 0x00007ffff6139f2e in g_cclosure_marshal_VOID__BOXEDv ()
+   from /usr/lib64/libgobject-2.0.so.0
+#14 0x00007ffff61370f2 in ?? () from /usr/lib64/libgobject-2.0.so.0
+#15 0x00007ffff6151657 in g_signal_emit_valist ()
+   from /usr/lib64/libgobject-2.0.so.0
+#16 0x00007ffff6151fc7 in g_signal_emit () from /usr/lib64/libgobject-2.0.so.0
+#17 0x00007ffff79e06a5 in gtk_widget_size_allocate ()
+   from /usr/lib64/libgtk-x11-2.0.so.0
+#18 0x00007ffff794adc1 in ?? () from /usr/lib64/libgtk-x11-2.0.so.0
+#19 0x00007ffff6139f2e in g_cclosure_marshal_VOID__BOXEDv ()
+   from /usr/lib64/libgobject-2.0.so.0
+#20 0x00007ffff61370f2 in ?? () from /usr/lib64/libgobject-2.0.so.0
+#21 0x00007ffff6151657 in g_signal_emit_valist ()
+   from /usr/lib64/libgobject-2.0.so.0
+#22 0x00007ffff6151fc7 in g_signal_emit () from /usr/lib64/libgobject-2.0.so.0
+#23 0x00007ffff79e06a5 in gtk_widget_size_allocate ()
+   from /usr/lib64/libgtk-x11-2.0.so.0
+#24 0x00007ffff79e9f4a in ?? () from /usr/lib64/libgtk-x11-2.0.so.0
+#25 0x00007ffff6139f2e in g_cclosure_marshal_VOID__BOXEDv ()
+   from /usr/lib64/libgobject-2.0.so.0
+#26 0x00007ffff61371a4 in ?? () from /usr/lib64/libgobject-2.0.so.0
+#27 0x00007ffff6151657 in g_signal_emit_valist ()
+   from /usr/lib64/libgobject-2.0.so.0
+#28 0x00007ffff6151fc7 in g_signal_emit () from /usr/lib64/libgobject-2.0.so.0
+#29 0x00007ffff79e06a5 in gtk_widget_size_allocate ()
+   from /usr/lib64/libgtk-x11-2.0.so.0
+#30 0x00007ffff79eb03e in ?? () from /usr/lib64/libgtk-x11-2.0.so.0
+#31 0x00007ffff61371a4 in ?? () from /usr/lib64/libgobject-2.0.so.0
+#32 0x00007ffff6151657 in g_signal_emit_valist ()
+   from /usr/lib64/libgobject-2.0.so.0
+#33 0x00007ffff6151fc7 in g_signal_emit () from /usr/lib64/libgobject-2.0.so.0
+#34 0x00007ffff7849790 in ?? () from /usr/lib64/libgtk-x11-2.0.so.0
+#35 0x00007ffff74fc5a7 in ?? () from /usr/lib64/libgdk-x11-2.0.so.0
+#36 0x00007ffff5e36bad in g_main_context_dispatch ()
+   from /usr/lib64/libglib-2.0.so.0
+#37 0x00007ffff5e36f80 in ?? () from /usr/lib64/libglib-2.0.so.0
+#38 0x00007ffff5e372a2 in g_main_loop_run () from /usr/lib64/libglib-2.0.so.0
+#39 0x00007ffff78c3137 in gtk_main () from /usr/lib64/libgtk-x11-2.0.so.0
+#40 0x000000000040454f in main (argc=2, argv=0x7fffffffe568)
+    at IRCClient.cc:598
++help where
+Print backtrace of all stack frames, or innermost COUNT frames.
+With a negative argument, print outermost -COUNT frames.
+Use of the 'full' qualifier also prints the values of the local variables.
+Use of the 'no-filters' qualifier prohibits frame filters from executing
+on this backtrace.
+
++where full
+#0  0x00007ffff4b2378f in _int_free () from /lib64/libc.so.6
+No symbol table info available.
+#1  0x00007ffff7511928 in gdk_region_subtract ()
+   from /usr/lib64/libgdk-x11-2.0.so.0
+No symbol table info available.
+#2  0x00007ffff75187a8 in ?? () from /usr/lib64/libgdk-x11-2.0.so.0
+No symbol table info available.
+#3  0x00007ffff75213b4 in ?? () from /usr/lib64/libgdk-x11-2.0.so.0
+No symbol table info available.
+#4  0x00007ffff75211d9 in ?? () from /usr/lib64/libgdk-x11-2.0.so.0
+No symbol table info available.
+#5  0x00007ffff7524b08 in ?? () from /usr/lib64/libgdk-x11-2.0.so.0
+No symbol table info available.
+#6  0x00007ffff79c0469 in ?? () from /usr/lib64/libgtk-x11-2.0.so.0
+No symbol table info available.
+#7  0x00007ffff6139f2e in g_cclosure_marshal_VOID__BOXEDv ()
+   from /usr/lib64/libgobject-2.0.so.0
+No symbol table info available.
+#8  0x00007ffff61370f2 in ?? () from /usr/lib64/libgobject-2.0.so.0
+No symbol table info available.
+#9  0x00007ffff6151657 in g_signal_emit_valist ()
+   from /usr/lib64/libgobject-2.0.so.0
+No symbol table info available.
+#10 0x00007ffff6151fc7 in g_signal_emit () from /usr/lib64/libgobject-2.0.so.0
+No symbol table info available.
+#11 0x00007ffff79e06a5 in gtk_widget_size_allocate ()
+   from /usr/lib64/libgtk-x11-2.0.so.0
+No symbol table info available.
+#12 0x00007ffff7925d0d in ?? () from /usr/lib64/libgtk-x11-2.0.so.0
+No symbol table info available.
+#13 0x00007ffff6139f2e in g_cclosure_marshal_VOID__BOXEDv ()
+   from /usr/lib64/libgobject-2.0.so.0
+No symbol table info available.
+#14 0x00007ffff61370f2 in ?? () from /usr/lib64/libgobject-2.0.so.0
+No symbol table info available.
+#15 0x00007ffff6151657 in g_signal_emit_valist ()
+   from /usr/lib64/libgobject-2.0.so.0
+No symbol table info available.
+#16 0x00007ffff6151fc7 in g_signal_emit () from /usr/lib64/libgobject-2.0.so.0
+No symbol table info available.
+#17 0x00007ffff79e06a5 in gtk_widget_size_allocate ()
+   from /usr/lib64/libgtk-x11-2.0.so.0
+No symbol table info available.
+#18 0x00007ffff794adc1 in ?? () from /usr/lib64/libgtk-x11-2.0.so.0
+No symbol table info available.
+#19 0x00007ffff6139f2e in g_cclosure_marshal_VOID__BOXEDv ()
+   from /usr/lib64/libgobject-2.0.so.0
+No symbol table info available.
+#20 0x00007ffff61370f2 in ?? () from /usr/lib64/libgobject-2.0.so.0
+No symbol table info available.
+#21 0x00007ffff6151657 in g_signal_emit_valist ()
+   from /usr/lib64/libgobject-2.0.so.0
+No symbol table info available.
+#22 0x00007ffff6151fc7 in g_signal_emit () from /usr/lib64/libgobject-2.0.so.0
+No symbol table info available.
+#23 0x00007ffff79e06a5 in gtk_widget_size_allocate ()
+   from /usr/lib64/libgtk-x11-2.0.so.0
+No symbol table info available.
+#24 0x00007ffff79e9f4a in ?? () from /usr/lib64/libgtk-x11-2.0.so.0
+No symbol table info available.
+#25 0x00007ffff6139f2e in g_cclosure_marshal_VOID__BOXEDv ()
+   from /usr/lib64/libgobject-2.0.so.0
+No symbol table info available.
+#26 0x00007ffff61371a4 in ?? () from /usr/lib64/libgobject-2.0.so.0
+No symbol table info available.
+#27 0x00007ffff6151657 in g_signal_emit_valist ()
+   from /usr/lib64/libgobject-2.0.so.0
+No symbol table info available.
+#28 0x00007ffff6151fc7 in g_signal_emit () from /usr/lib64/libgobject-2.0.so.0
+No symbol table info available.
+#29 0x00007ffff79e06a5 in gtk_widget_size_allocate ()
+   from /usr/lib64/libgtk-x11-2.0.so.0
+No symbol table info available.
+#30 0x00007ffff79eb03e in ?? () from /usr/lib64/libgtk-x11-2.0.so.0
+No symbol table info available.
+#31 0x00007ffff61371a4 in ?? () from /usr/lib64/libgobject-2.0.so.0
+No symbol table info available.
+#32 0x00007ffff6151657 in g_signal_emit_valist ()
+   from /usr/lib64/libgobject-2.0.so.0
+No symbol table info available.
+#33 0x00007ffff6151fc7 in g_signal_emit () from /usr/lib64/libgobject-2.0.so.0
+No symbol table info available.
+#34 0x00007ffff7849790 in ?? () from /usr/lib64/libgtk-x11-2.0.so.0
+No symbol table info available.
+#35 0x00007ffff74fc5a7 in ?? () from /usr/lib64/libgdk-x11-2.0.so.0
+No symbol table info available.
+#36 0x00007ffff5e36bad in g_main_context_dispatch ()
+   from /usr/lib64/libglib-2.0.so.0
+No symbol table info available.
+#37 0x00007ffff5e36f80 in ?? () from /usr/lib64/libglib-2.0.so.0
+No symbol table info available.
+#38 0x00007ffff5e372a2 in g_main_loop_run () from /usr/lib64/libglib-2.0.so.0
+No symbol table info available.
+#39 0x00007ffff78c3137 in gtk_main () from /usr/lib64/libgtk-x11-2.0.so.0
+No symbol table info available.
+#40 0x000000000040454f in main (argc=2, argv=0x7fffffffe568)
+    at IRCClient.cc:598
+        window = 0x65e080
+        list = 0x656350
+        send_message = 0x6a1080
+        send_button = 0x68dcc0
+        create_account_button = 0x68dd80
+        label = 0x64e8f0
+        table = 0x656020
+        create_room_button = 0x68de40
++q

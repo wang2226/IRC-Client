@@ -1,0 +1,51 @@
+Sun Apr 23 00:19:46 EDT 2017
++r 1234
+Starting program: /u/data/u89/wang2226/cs240/lab11-src/IRCClient 1234
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib64/libthread_db.so.1".
+[New Thread 0x7fffef578700 (LWP 30427)]
+[New Thread 0x7fffeed77700 (LWP 30428)]
+
+Program received signal SIGABRT, Aborted.
+0x00007ffff4ade2a7 in raise () from /lib64/libc.so.6
++where full
+#0  0x00007ffff4ade2a7 in raise () from /lib64/libc.so.6
+No symbol table info available.
+#1  0x00007ffff4adf6fa in abort () from /lib64/libc.so.6
+No symbol table info available.
+#2  0x00007ffff4b1d568 in __libc_message () from /lib64/libc.so.6
+No symbol table info available.
+#3  0x00007ffff4b22e56 in malloc_printerr () from /lib64/libc.so.6
+No symbol table info available.
+#4  0x00007ffff4b2365e in _int_free () from /lib64/libc.so.6
+No symbol table info available.
+#5  0x00007ffff78b7cef in gtk_label_set_markup () from /usr/lib64/libgtk-x11-2.0.so.0
+No symbol table info available.
+#6  0x00007ffff799a514 in gtk_tooltip_set_markup () from /usr/lib64/libgtk-x11-2.0.so.0
+No symbol table info available.
+#7  0x00007ffff799aaf9 in ?? () from /usr/lib64/libgtk-x11-2.0.so.0
+No symbol table info available.
+#8  0x00007ffff799b8bf in ?? () from /usr/lib64/libgtk-x11-2.0.so.0
+No symbol table info available.
+#9  0x00007ffff78c40a8 in gtk_main_do_event () from /usr/lib64/libgtk-x11-2.0.so.0
+No symbol table info available.
+#10 0x00007ffff753931c in ?? () from /usr/lib64/libgdk-x11-2.0.so.0
+No symbol table info available.
+#11 0x00007ffff5e36c9d in g_main_context_dispatch () from /usr/lib64/libglib-2.0.so.0
+No symbol table info available.
+#12 0x00007ffff5e36f80 in ?? () from /usr/lib64/libglib-2.0.so.0
+No symbol table info available.
+#13 0x00007ffff5e372a2 in g_main_loop_run () from /usr/lib64/libglib-2.0.so.0
+No symbol table info available.
+#14 0x00007ffff78c3137 in gtk_main () from /usr/lib64/libgtk-x11-2.0.so.0
+No symbol table info available.
+#15 0x000000000040454f in main (argc=2, argv=0x7fffffffe568) at IRCClient.cc:598
+        window = 0x65e080
+        list = 0x656350
+        send_message = 0x6a1080
+        send_button = 0x68dcc0
+        create_account_button = 0x68dd80
+        label = 0x64e8f0
+        table = 0x656020
+        create_room_button = 0x68de40
++q
