@@ -114,7 +114,7 @@ void send_message() {
 	strcat(args, message);
 	sendCommand(host, port, "SEND-MESSAGE", user, password, args, response);
 	if (!strcmp(response,"OK\r\n")) {
-		//messages_exist = 1;
+		messages_exist = 1;
 		printf("Message %s sent\n", args);
 	}
 }
@@ -127,13 +127,15 @@ void update_list_rooms() {
 
 	// Clear rooms list
 	gtk_list_store_clear(GTK_LIST_STORE (list_rooms));
+	roomCount = 0;
 
 	/* Add some messages to the window */
 	if (user_exist == 1) {
 		char responserooms[ MAX_RESPONSE ] = {0};
 		responserooms[0] = '\0';
 		sendCommand(host, port, "LIST-ROOMS", user, password, "default", responserooms);
-		printf("response: %s\n", responserooms);
+
+		printf("list rooms response: %s\n", responserooms);
 
 		temp = strtok(responserooms, "\r\n");
 		if(temp != NULL){
@@ -141,18 +143,20 @@ void update_list_rooms() {
     			gtk_list_store_append (GTK_LIST_STORE (list_rooms), &iter);
     			gtk_list_store_set (GTK_LIST_STORE (list_rooms), &iter, 0, msg, -1);
 			roomCount++;
+			printf("No%d ROOM: %s\n", roomCount, msg);	        
 		}
 		
 		while ((temp = strtok(NULL, "\r\n")) != NULL) {
 
 			msg = g_strdup_printf ("%s", temp);
-			printf("ROOMS %s\n", msg);	        
 			gtk_list_store_append (GTK_LIST_STORE (list_rooms), &iter);
 	        	gtk_list_store_set (GTK_LIST_STORE (list_rooms), &iter, 0, msg, -1);
 			roomCount++;
+			printf("No%d ROOM: %s\n", roomCount, msg);	        
 		}
 
 	}
+	free(temp);
 }
 
 void update_list_users() {

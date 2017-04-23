@@ -1,0 +1,79 @@
+Sun Apr 23 00:58:29 EDT 2017
++b 372
+Breakpoint 1 at 0x403870: file IRCClient.cc, line 372.
++r 1234
+Starting program: /u/data/u89/wang2226/cs240/lab11-src/IRCClient 1234
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib64/libthread_db.so.1".
+
+Breakpoint 1, time_handler (widget=0x65e080) at IRCClient.cc:372
+372		gtk_list_store_clear(GTK_LIST_STORE(list_rooms));
++n
+373		update_list_rooms();
++s
+update_list_rooms () at IRCClient.cc:122
+122	void update_list_rooms() {
++list
+117			//messages_exist = 1;
+118			printf("Message %s sent\n", args);
+119		}
+120	}
+121	
+122	void update_list_rooms() {
+123		GtkTreeIter iter;
+124		int i;
+125		char * temp = (char *) malloc (30 * sizeof(char));
+126		gchar *msg;
++n
+125		char * temp = (char *) malloc (30 * sizeof(char));
++n
+129		gtk_list_store_clear(GTK_LIST_STORE (list_rooms));
++n
+132		if (user_exist == 1) {
++n
+156	}
++list
+151		        	gtk_list_store_set (GTK_LIST_STORE (list_rooms), &iter, 0, msg, -1);
+152				roomCount++;
+153			}
+154	
+155		}
+156	}
+157	
+158	void update_list_users() {
+159		GtkTreeIter iterator;
+160		int i;
++n
+time_handler (widget=0x65e080) at IRCClient.cc:374
+374		if(strlen(user) != 0 && strlen(room) != 0){
++p user
+$1 = 0x626420 ""
++p room
+$2 = 0x621050 ""
++n
+379		return TRUE;
++n
+380	}
++n
+0x00007ffff5e37643 in ?? () from /usr/lib64/libglib-2.0.so.0
++list
+375			gtk_list_store_clear(GTK_LIST_STORE(list_users));
+376			update_list_users();
+377			get_messages();
+378		}
+379		return TRUE;
+380	}
+381	
+382	/*Callback function in which reacts to the "clicked" signal*/
+383	static void show_create_account_dialog (GtkButton *button, GtkWindow *window) {
+384		GtkWidget *dialog;
++n
+Cannot find bounds of current function
++bt
+#0  0x00007ffff5e37643 in ?? () from /usr/lib64/libglib-2.0.so.0
+#1  0x00007ffff5e36bad in g_main_context_dispatch () from /usr/lib64/libglib-2.0.so.0
+#2  0x00007ffff5e36f80 in ?? () from /usr/lib64/libglib-2.0.so.0
+#3  0x00007ffff5e372a2 in g_main_loop_run () from /usr/lib64/libglib-2.0.so.0
+#4  0x00007ffff78c3137 in gtk_main () from /usr/lib64/libgtk-x11-2.0.so.0
+#5  0x00000000004044f0 in main (argc=2, argv=0x7fffffffe568) at IRCClient.cc:598
++q

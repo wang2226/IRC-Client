@@ -1,0 +1,90 @@
+Sun Apr 23 00:40:31 EDT 2017
++b 337
+Breakpoint 1 at 0x4036ab: file IRCClient.cc, line 337.
++r 1234
+Starting program: /u/data/u89/wang2226/cs240/lab11-src/IRCClient 1234
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib64/libthread_db.so.1".
+[New Thread 0x7fffef578700 (LWP 3117)]
+[New Thread 0x7fffeed77700 (LWP 3118)]
+
+Breakpoint 1, click_changed (widget=0x686420, Widgetone=0x6f9b30) at IRCClient.cc:339
+339		if (gtk_tree_selection_get_selected(GTK_TREE_SELECTION(selection), &model, &iter)) {
++n
+340		        gtk_tree_model_get(model, &iter, 0, &value,  -1);
++list
+335		GtkTreeIter iter;
+336	 	GtkTreeModel *model;
+337		char * value;
+338		
+339		if (gtk_tree_selection_get_selected(GTK_TREE_SELECTION(selection), &model, &iter)) {
+340		        gtk_tree_model_get(model, &iter, 0, &value,  -1);
+341			printf("%s\n", value);
+342			room = strdup(value);
+343	
+344			if (pre_value == NULL) {
++n
+341			printf("%s\n", value);
++n
+342			room = strdup(value);
++n
+344			if (pre_value == NULL) {
++p room
+$1 = 0x6faae0 "java-programming"
++p pre-value
+No symbol "pre" in current context.
++p pre-value
+No symbol "pre" in current context.
++p pre_value 
+$2 = 0x0
++n
+345				printf("pre_value is null\n");
++n
+346				enter_room();
++n
+355			messages_exist = 1;
++list
+350				enter_room();
+351				gtk_list_store_clear(GTK_LIST_STORE(list_users));
+352				update_list_users();
+353			}
+354	
+355			messages_exist = 1;
+356			pre_value = strdup(value);
+357	 	}
+358	}
+359	
++n
+356			pre_value = strdup(value);
++n
+358	}
++p pre_value 
+$3 = 0x674460 "java-programming"
++n
+0x00007ffff6136f75 in g_closure_invoke () from /usr/lib64/libgobject-2.0.so.0
++list
+353			}
+354	
+355			messages_exist = 1;
+356			pre_value = strdup(value);
+357	 	}
+358	}
+359	
+360	static void message_callback(GtkWidget *entry) {
+361		const gchar *entry_text;
+362		entry_text = gtk_entry_get_text (GTK_ENTRY (entry));
++n
+Single stepping until exit from function g_closure_invoke,
+which has no line number information.
+0x00007ffff61365d0 in g_closure_unref () from /usr/lib64/libgobject-2.0.so.0
++n
+Single stepping until exit from function g_closure_unref,
+which has no line number information.
+0x00007ffff61492c1 in ?? () from /usr/lib64/libgobject-2.0.so.0
++n
+Cannot find bounds of current function
++n
+Cannot find bounds of current function
++n
+Cannot find bounds of current function
++q

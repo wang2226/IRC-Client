@@ -1,0 +1,51 @@
+Sun Apr 23 01:10:00 EDT 2017
++b 123
+Breakpoint 1 at 0x40282e: file IRCClient.cc, line 123.
++r 1234
+Starting program: /u/data/u89/wang2226/cs240/lab11-src/IRCClient 1234
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib64/libthread_db.so.1".
+[New Thread 0x7fffef578700 (LWP 7475)]
+[New Thread 0x7fffeed77700 (LWP 7477)]
+
+Breakpoint 1, update_list_rooms () at IRCClient.cc:125
+125		char * temp = (char *) malloc (30 * sizeof(char));
++n
+129		gtk_list_store_clear(GTK_LIST_STORE (list_rooms));
++n
+132		if (user_exist == 1) {
++n
+156	}
++n
+time_handler (widget=0x65e080) at IRCClient.cc:374
+374		if(strlen(user) != 0 && strlen(room) != 0){
++n
+379		return TRUE;
++n
+380	}
++n
+0x00007ffff5e37643 in ?? () from /usr/lib64/libglib-2.0.so.0
++n
+Cannot find bounds of current function
++c
+Continuing.
+
+Breakpoint 1, update_list_rooms () at IRCClient.cc:125
+125		char * temp = (char *) malloc (30 * sizeof(char));
++n
+129		gtk_list_store_clear(GTK_LIST_STORE (list_rooms));
++n
+132		if (user_exist == 1) {
++n
+156	}
++list
+151		        	gtk_list_store_set (GTK_LIST_STORE (list_rooms), &iter, 0, msg, -1);
+152				roomCount++;
+153			}
+154	
+155		}
+156	}
+157	
+158	void update_list_users() {
+159		GtkTreeIter iterator;
+160		int i;

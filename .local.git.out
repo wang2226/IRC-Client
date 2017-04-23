@@ -169,3 +169,22 @@ After doing this, you may fix the identity used for this commit with:
  3 files changed, 617 insertions(+), 148 deletions(-)
  rewrite IRCClient (90%)
  rewrite IRCClient.cc (95%)
+[master ef6f62c] Make IRCclient
+ Committer: Haoran Wang <wang2226@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 6 files changed, 347 insertions(+), 1 deletion(-)
+ rewrite IRCClient (60%)
+ create mode 100644 debugging_log/log0
+ create mode 100644 debugging_log/log1
+ create mode 100755 populate-server.sh
