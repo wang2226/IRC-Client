@@ -1,0 +1,69 @@
+Tue Apr 25 00:24:24 EDT 2017
++r 1234
+Starting program: /u/data/u89/wang2226/cs240/lab11-src/IRCClient 1234
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib64/libthread_db.so.1".
+[New Thread 0x7fffefb13700 (LWP 25734)]
+[New Thread 0x7fffef312700 (LWP 25735)]
+
+Program received signal SIGSEGV, Segmentation fault.
+0x00007ffff53b91ed in realloc () from /lib64/libc.so.6
++where
+#0  0x00007ffff53b91ed in realloc () from /lib64/libc.so.6
+#1  0x00007ffff5e3c3ad in g_realloc () from /usr/lib64/libglib-2.0.so.0
+#2  0x00007ffff613fc80 in g_object_weak_ref ()
+   from /usr/lib64/libgobject-2.0.so.0
+#3  0x00007ffff753b735 in ?? () from /usr/lib64/libgdk-x11-2.0.so.0
+#4  0x00007ffff753ba6c in ?? () from /usr/lib64/libgdk-x11-2.0.so.0
+#5  0x00007ffff751cf06 in ?? () from /usr/lib64/libgdk-x11-2.0.so.0
+#6  0x00007ffff751d7c8 in gdk_window_process_all_updates ()
+   from /usr/lib64/libgdk-x11-2.0.so.0
+#7  0x00007ffff78497a1 in ?? () from /usr/lib64/libgtk-x11-2.0.so.0
+#8  0x00007ffff74fc5a7 in ?? () from /usr/lib64/libgdk-x11-2.0.so.0
+#9  0x00007ffff5e36bad in g_main_context_dispatch ()
+   from /usr/lib64/libglib-2.0.so.0
+#10 0x00007ffff5e36f80 in ?? () from /usr/lib64/libglib-2.0.so.0
+#11 0x00007ffff5e372a2 in g_main_loop_run () from /usr/lib64/libglib-2.0.so.0
+#12 0x00007ffff78c3137 in gtk_main () from /usr/lib64/libgtk-x11-2.0.so.0
+#13 0x000000000040470a in main (argc=2, argv=0x7fffffffe568)
+    at IRCClient.cc:638
++bt
+#0  0x00007ffff53b91ed in realloc () from /lib64/libc.so.6
+#1  0x00007ffff5e3c3ad in g_realloc () from /usr/lib64/libglib-2.0.so.0
+#2  0x00007ffff613fc80 in g_object_weak_ref ()
+   from /usr/lib64/libgobject-2.0.so.0
+#3  0x00007ffff753b735 in ?? () from /usr/lib64/libgdk-x11-2.0.so.0
+#4  0x00007ffff753ba6c in ?? () from /usr/lib64/libgdk-x11-2.0.so.0
+#5  0x00007ffff751cf06 in ?? () from /usr/lib64/libgdk-x11-2.0.so.0
+#6  0x00007ffff751d7c8 in gdk_window_process_all_updates ()
+   from /usr/lib64/libgdk-x11-2.0.so.0
+#7  0x00007ffff78497a1 in ?? () from /usr/lib64/libgtk-x11-2.0.so.0
+#8  0x00007ffff74fc5a7 in ?? () from /usr/lib64/libgdk-x11-2.0.so.0
+#9  0x00007ffff5e36bad in g_main_context_dispatch ()
+   from /usr/lib64/libglib-2.0.so.0
+#10 0x00007ffff5e36f80 in ?? () from /usr/lib64/libglib-2.0.so.0
+#11 0x00007ffff5e372a2 in g_main_loop_run () from /usr/lib64/libglib-2.0.so.0
+#12 0x00007ffff78c3137 in gtk_main () from /usr/lib64/libgtk-x11-2.0.so.0
+#13 0x000000000040470a in main (argc=2, argv=0x7fffffffe568)
+    at IRCClient.cc:638
++bt
+#0  0x00007ffff53b91ed in realloc () from /lib64/libc.so.6
+#1  0x00007ffff5e3c3ad in g_realloc () from /usr/lib64/libglib-2.0.so.0
+#2  0x00007ffff613fc80 in g_object_weak_ref ()
+   from /usr/lib64/libgobject-2.0.so.0
+#3  0x00007ffff753b735 in ?? () from /usr/lib64/libgdk-x11-2.0.so.0
+#4  0x00007ffff753ba6c in ?? () from /usr/lib64/libgdk-x11-2.0.so.0
+#5  0x00007ffff751cf06 in ?? () from /usr/lib64/libgdk-x11-2.0.so.0
+#6  0x00007ffff751d7c8 in gdk_window_process_all_updates ()
+   from /usr/lib64/libgdk-x11-2.0.so.0
+#7  0x00007ffff78497a1 in ?? () from /usr/lib64/libgtk-x11-2.0.so.0
+#8  0x00007ffff74fc5a7 in ?? () from /usr/lib64/libgdk-x11-2.0.so.0
+#9  0x00007ffff5e36bad in g_main_context_dispatch ()
+   from /usr/lib64/libglib-2.0.so.0
+#10 0x00007ffff5e36f80 in ?? () from /usr/lib64/libglib-2.0.so.0
+#11 0x00007ffff5e372a2 in g_main_loop_run () from /usr/lib64/libglib-2.0.so.0
+#12 0x00007ffff78c3137 in gtk_main () from /usr/lib64/libgtk-x11-2.0.so.0
+#13 0x000000000040470a in main (argc=2, argv=0x7fffffffe568)
+    at IRCClient.cc:638
++kill
++quit

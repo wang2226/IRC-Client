@@ -1,0 +1,12 @@
+Tue Apr 25 00:25:43 EDT 2017
++r 1234
+Starting program: /u/data/u89/wang2226/cs240/lab11-src/IRCClient 1234
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib64/libthread_db.so.1".
+[New Thread 0x7fffefb13700 (LWP 27036)]
+[New Thread 0x7fffef312700 (LWP 27037)]
+
+Program received signal SIGSEGV, Segmentation fault.
+0x00007ffff53b4f75 in malloc_consolidate () from /lib64/libc.so.6
++kill
++quit
