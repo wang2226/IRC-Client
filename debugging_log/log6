@@ -1,0 +1,11 @@
+Mon Apr 24 22:56:32 EDT 2017
++r 2035
+Starting program: /u/data/u89/wang2226/cs240/lab11-src/IRCClient 2035
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib64/libthread_db.so.1".
+[New Thread 0x7fffef578700 (LWP 13461)]
+[New Thread 0x7fffeed77700 (LWP 13462)]
+[Thread 0x7fffeed77700 (LWP 13462) exited]
+[Thread 0x7ffff7fae8c0 (LWP 13296) exited]
+[Inferior 1 (process 13296) exited normally]
++quit

@@ -1,0 +1,171 @@
+Mon Apr 24 22:57:55 EDT 2017
++r 2035
+Starting program: /u/data/u89/wang2226/cs240/lab11-src/IRCClient 2035
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib64/libthread_db.so.1".
+[New Thread 0x7fffef578700 (LWP 14841)]
+[New Thread 0x7fffeed77700 (LWP 14843)]
+
+Program received signal SIGABRT, Aborted.
+0x00007ffff4ade2a7 in raise () from /lib64/libc.so.6
++where
+#0  0x00007ffff4ade2a7 in raise () from /lib64/libc.so.6
+#1  0x00007ffff4adf6fa in abort () from /lib64/libc.so.6
+#2  0x00007ffff4b1d568 in __libc_message () from /lib64/libc.so.6
+#3  0x00007ffff4b22e56 in malloc_printerr () from /lib64/libc.so.6
+#4  0x00007ffff4b25325 in _int_malloc () from /lib64/libc.so.6
+#5  0x00007ffff4b26a78 in malloc () from /lib64/libc.so.6
+#6  0x00007ffff5e3c2e9 in g_malloc () from /usr/lib64/libglib-2.0.so.0
+#7  0x00007ffff790802b in ?? () from /usr/lib64/libgtk-x11-2.0.so.0
+#8  0x00007ffff79bb9f2 in ?? () from /usr/lib64/libgtk-x11-2.0.so.0
+#9  0x00007ffff6136f75 in g_closure_invoke ()
+   from /usr/lib64/libgobject-2.0.so.0
+#10 0x00007ffff61492c1 in ?? () from /usr/lib64/libgobject-2.0.so.0
+#11 0x00007ffff6151d65 in g_signal_emit_valist ()
+   from /usr/lib64/libgobject-2.0.so.0
+#12 0x00007ffff6151fc7 in g_signal_emit () from /usr/lib64/libgobject-2.0.so.0
+#13 0x00007ffff78c0f34 in gtk_list_store_insert ()
+   from /usr/lib64/libgtk-x11-2.0.so.0
+#14 0x0000000000402d59 in update_list_users () at IRCClient.cc:179
+#15 0x0000000000403451 in enter_room () at IRCClient.cc:273
+#16 0x0000000000403a2c in click_changed (widget=0x686420, Widgetone=0x708690)
+    at IRCClient.cc:377
+#17 0x00007ffff6136f75 in g_closure_invoke ()
+   from /usr/lib64/libgobject-2.0.so.0
+#18 0x00007ffff61492c1 in ?? () from /usr/lib64/libgobject-2.0.so.0
+#19 0x00007ffff6151d65 in g_signal_emit_valist ()
+   from /usr/lib64/libgobject-2.0.so.0
+#20 0x00007ffff6151fc7 in g_signal_emit () from /usr/lib64/libgobject-2.0.so.0
+#21 0x00007ffff79c3c89 in ?? () from /usr/lib64/libgtk-x11-2.0.so.0
+#22 0x00007ffff78c55df in ?? () from /usr/lib64/libgtk-x11-2.0.so.0
+#23 0x00007ffff6136f75 in g_closure_invoke ()
+   from /usr/lib64/libgobject-2.0.so.0
+#24 0x00007ffff61491ba in ?? () from /usr/lib64/libgobject-2.0.so.0
+#25 0x00007ffff6151854 in g_signal_emit_valist ()
+   from /usr/lib64/libgobject-2.0.so.0
+#26 0x00007ffff6151fc7 in g_signal_emit () from /usr/lib64/libgobject-2.0.so.0
+#27 0x00007ffff79dc63c in ?? () from /usr/lib64/libgtk-x11-2.0.so.0
+#28 0x00007ffff78c3d24 in gtk_propagate_event ()
+   from /usr/lib64/libgtk-x11-2.0.so.0
+#29 0x00007ffff78c41bb in gtk_main_do_event ()
+   from /usr/lib64/libgtk-x11-2.0.so.0
+#30 0x00007ffff753931c in ?? () from /usr/lib64/libgdk-x11-2.0.so.0
+#31 0x00007ffff5e36c9d in g_main_context_dispatch ()
+   from /usr/lib64/libglib-2.0.so.0
+#32 0x00007ffff5e36f80 in ?? () from /usr/lib64/libglib-2.0.so.0
+#33 0x00007ffff5e372a2 in g_main_loop_run () from /usr/lib64/libglib-2.0.so.0
+#34 0x00007ffff78c3137 in gtk_main () from /usr/lib64/libgtk-x11-2.0.so.0
+#35 0x00000000004047d7 in main (argc=2, argv=0x7fffffffe568)
+    at IRCClient.cc:635
++kill
++r 2035
+Starting program: /u/data/u89/wang2226/cs240/lab11-src/IRCClient 2035
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib64/libthread_db.so.1".
+[New Thread 0x7fffef578700 (LWP 21684)]
+[New Thread 0x7fffeed77700 (LWP 21687)]
+
+Program received signal SIGABRT, Aborted.
+0x00007ffff4ade2a7 in raise () from /lib64/libc.so.6
++where
+#0  0x00007ffff4ade2a7 in raise () from /lib64/libc.so.6
+#1  0x00007ffff4adf6fa in abort () from /lib64/libc.so.6
+#2  0x00007ffff4b1d568 in __libc_message () from /lib64/libc.so.6
+#3  0x00007ffff4b22e56 in malloc_printerr () from /lib64/libc.so.6
+#4  0x00007ffff4b25325 in _int_malloc () from /lib64/libc.so.6
+#5  0x00007ffff4b26a78 in malloc () from /lib64/libc.so.6
+#6  0x00007ffff5e3c2e9 in g_malloc () from /usr/lib64/libglib-2.0.so.0
+#7  0x00007ffff790802b in ?? () from /usr/lib64/libgtk-x11-2.0.so.0
+#8  0x00007ffff79bb9f2 in ?? () from /usr/lib64/libgtk-x11-2.0.so.0
+#9  0x00007ffff6136f75 in g_closure_invoke ()
+   from /usr/lib64/libgobject-2.0.so.0
+#10 0x00007ffff61492c1 in ?? () from /usr/lib64/libgobject-2.0.so.0
+#11 0x00007ffff6151d65 in g_signal_emit_valist ()
+   from /usr/lib64/libgobject-2.0.so.0
+#12 0x00007ffff6151fc7 in g_signal_emit () from /usr/lib64/libgobject-2.0.so.0
+#13 0x00007ffff78c0f34 in gtk_list_store_insert ()
+   from /usr/lib64/libgtk-x11-2.0.so.0
+#14 0x000000000040305b in update_list_messages () at IRCClient.cc:215
+#15 0x0000000000403213 in get_messages () at IRCClient.cc:237
+#16 0x0000000000403460 in enter_room () at IRCClient.cc:275
+#17 0x0000000000403a2c in click_changed (widget=0x686420, Widgetone=0x6f9900)
+    at IRCClient.cc:377
+#18 0x00007ffff6136f75 in g_closure_invoke ()
+   from /usr/lib64/libgobject-2.0.so.0
+#19 0x00007ffff61492c1 in ?? () from /usr/lib64/libgobject-2.0.so.0
+#20 0x00007ffff6151d65 in g_signal_emit_valist ()
+   from /usr/lib64/libgobject-2.0.so.0
+#21 0x00007ffff6151fc7 in g_signal_emit () from /usr/lib64/libgobject-2.0.so.0
+#22 0x00007ffff79c3c89 in ?? () from /usr/lib64/libgtk-x11-2.0.so.0
+#23 0x00007ffff78c55df in ?? () from /usr/lib64/libgtk-x11-2.0.so.0
+#24 0x00007ffff6136f75 in g_closure_invoke ()
+   from /usr/lib64/libgobject-2.0.so.0
+#25 0x00007ffff61491ba in ?? () from /usr/lib64/libgobject-2.0.so.0
+#26 0x00007ffff6151854 in g_signal_emit_valist ()
+   from /usr/lib64/libgobject-2.0.so.0
+#27 0x00007ffff6151fc7 in g_signal_emit () from /usr/lib64/libgobject-2.0.so.0
+#28 0x00007ffff79dc63c in ?? () from /usr/lib64/libgtk-x11-2.0.so.0
+#29 0x00007ffff78c3d24 in gtk_propagate_event ()
+   from /usr/lib64/libgtk-x11-2.0.so.0
+#30 0x00007ffff78c41bb in gtk_main_do_event ()
+   from /usr/lib64/libgtk-x11-2.0.so.0
+#31 0x00007ffff753931c in ?? () from /usr/lib64/libgdk-x11-2.0.so.0
+#32 0x00007ffff5e36c9d in g_main_context_dispatch ()
+   from /usr/lib64/libglib-2.0.so.0
+#33 0x00007ffff5e36f80 in ?? () from /usr/lib64/libglib-2.0.so.0
+#34 0x00007ffff5e372a2 in g_main_loop_run () from /usr/lib64/libglib-2.0.so.0
+#35 0x00007ffff78c3137 in gtk_main () from /usr/lib64/libgtk-x11-2.0.so.0
+#36 0x00000000004047d7 in main (argc=2, argv=0x7fffffffe568)
+    at IRCClient.cc:635
++where
+#0  0x00007ffff4ade2a7 in raise () from /lib64/libc.so.6
+#1  0x00007ffff4adf6fa in abort () from /lib64/libc.so.6
+#2  0x00007ffff4b1d568 in __libc_message () from /lib64/libc.so.6
+#3  0x00007ffff4b22e56 in malloc_printerr () from /lib64/libc.so.6
+#4  0x00007ffff4b25325 in _int_malloc () from /lib64/libc.so.6
+#5  0x00007ffff4b26a78 in malloc () from /lib64/libc.so.6
+#6  0x00007ffff5e3c2e9 in g_malloc () from /usr/lib64/libglib-2.0.so.0
+#7  0x00007ffff790802b in ?? () from /usr/lib64/libgtk-x11-2.0.so.0
+#8  0x00007ffff79bb9f2 in ?? () from /usr/lib64/libgtk-x11-2.0.so.0
+#9  0x00007ffff6136f75 in g_closure_invoke ()
+   from /usr/lib64/libgobject-2.0.so.0
+#10 0x00007ffff61492c1 in ?? () from /usr/lib64/libgobject-2.0.so.0
+#11 0x00007ffff6151d65 in g_signal_emit_valist ()
+   from /usr/lib64/libgobject-2.0.so.0
+#12 0x00007ffff6151fc7 in g_signal_emit () from /usr/lib64/libgobject-2.0.so.0
+#13 0x00007ffff78c0f34 in gtk_list_store_insert ()
+   from /usr/lib64/libgtk-x11-2.0.so.0
+#14 0x000000000040305b in update_list_messages () at IRCClient.cc:215
+#15 0x0000000000403213 in get_messages () at IRCClient.cc:237
+#16 0x0000000000403460 in enter_room () at IRCClient.cc:275
+#17 0x0000000000403a2c in click_changed (widget=0x686420, Widgetone=0x6f9900)
+    at IRCClient.cc:377
+#18 0x00007ffff6136f75 in g_closure_invoke ()
+   from /usr/lib64/libgobject-2.0.so.0
+#19 0x00007ffff61492c1 in ?? () from /usr/lib64/libgobject-2.0.so.0
+#20 0x00007ffff6151d65 in g_signal_emit_valist ()
+   from /usr/lib64/libgobject-2.0.so.0
+#21 0x00007ffff6151fc7 in g_signal_emit () from /usr/lib64/libgobject-2.0.so.0
+#22 0x00007ffff79c3c89 in ?? () from /usr/lib64/libgtk-x11-2.0.so.0
+#23 0x00007ffff78c55df in ?? () from /usr/lib64/libgtk-x11-2.0.so.0
+#24 0x00007ffff6136f75 in g_closure_invoke ()
+   from /usr/lib64/libgobject-2.0.so.0
+#25 0x00007ffff61491ba in ?? () from /usr/lib64/libgobject-2.0.so.0
+#26 0x00007ffff6151854 in g_signal_emit_valist ()
+   from /usr/lib64/libgobject-2.0.so.0
+#27 0x00007ffff6151fc7 in g_signal_emit () from /usr/lib64/libgobject-2.0.so.0
+#28 0x00007ffff79dc63c in ?? () from /usr/lib64/libgtk-x11-2.0.so.0
+#29 0x00007ffff78c3d24 in gtk_propagate_event ()
+   from /usr/lib64/libgtk-x11-2.0.so.0
+#30 0x00007ffff78c41bb in gtk_main_do_event ()
+   from /usr/lib64/libgtk-x11-2.0.so.0
+#31 0x00007ffff753931c in ?? () from /usr/lib64/libgdk-x11-2.0.so.0
+#32 0x00007ffff5e36c9d in g_main_context_dispatch ()
+   from /usr/lib64/libglib-2.0.so.0
+#33 0x00007ffff5e36f80 in ?? () from /usr/lib64/libglib-2.0.so.0
+#34 0x00007ffff5e372a2 in g_main_loop_run () from /usr/lib64/libglib-2.0.so.0
+#35 0x00007ffff78c3137 in gtk_main () from /usr/lib64/libgtk-x11-2.0.so.0
+#36 0x00000000004047d7 in main (argc=2, argv=0x7fffffffe568)
+    at IRCClient.cc:635
++kill
++quit

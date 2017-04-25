@@ -143,6 +143,7 @@ void update_list_rooms() {
     			gtk_list_store_append (GTK_LIST_STORE (list_rooms), &iter);
     			gtk_list_store_set (GTK_LIST_STORE (list_rooms), &iter, 0, msg, -1);
 			printf("list rooms: %s\n", msg);	        
+			g_free(msg);
 		}
 		
 		while ((buffer = strtok(NULL, "\r\n")) != NULL) {
@@ -150,10 +151,9 @@ void update_list_rooms() {
 			gtk_list_store_append (GTK_LIST_STORE (list_rooms), &iter);
 	        	gtk_list_store_set (GTK_LIST_STORE (list_rooms), &iter, 0, msg, -1);
 			printf("list rooms: %s\n", msg);	        
+			g_free(msg);
 		}
 
-		if(msg != NULL)
-			g_free(msg);
 	}
 	if(buffer != NULL)
 		free(buffer);
@@ -179,6 +179,7 @@ void update_list_users() {
     				gtk_list_store_append (GTK_LIST_STORE (list_users), &iterator);
     				gtk_list_store_set (GTK_LIST_STORE (list_users), &iterator, 0, msg, -1);
 				printf("list users: %s\n",  msg);	        
+				g_free(msg);
 			}
 
 			while ((buffer = strtok(NULL, "\r\n")) != NULL) {
@@ -186,9 +187,8 @@ void update_list_users() {
 	       			gtk_list_store_append (GTK_LIST_STORE (list_users), &iterator);
 	        		gtk_list_store_set (GTK_LIST_STORE (list_users), &iterator, 0, msg, -1);
 				printf("list users: %s\n",  msg);	        
-			}
-			if(msg != NULL)
 				g_free(msg);
+			}
 		}
 	}
 	if(buffer != NULL)
@@ -215,6 +215,7 @@ static void update_list_messages() {
 			gtk_list_store_append (GTK_LIST_STORE (list_messages), &iterators);
 			gtk_list_store_set (GTK_LIST_STORE (list_messages), &iterators, 0, msg, -1);
 			printf("list messages: %s\n",  msg);	        
+			g_free(msg);
 		}
 
 		while ((buffer = strtok(NULL, "\r\n")) != NULL) {
@@ -222,9 +223,8 @@ static void update_list_messages() {
 			gtk_list_store_append (GTK_LIST_STORE (list_messages), &iterators);
 			gtk_list_store_set (GTK_LIST_STORE (list_messages), &iterators, 0, msg, -1);
 			printf("list messages: %s\n",  msg);	        
-		}
-		if(msg != NULL)
 			g_free(msg);
+		}
 	}
 	if(buffer != NULL)
 		free (buffer);
