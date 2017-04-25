@@ -1,0 +1,12 @@
+Tue Apr 25 01:54:58 EDT 2017
++r 1234
+Starting program: /u/data/u89/wang2226/cs240/lab11-src/IRCClient 1234
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib64/libthread_db.so.1".
+[New Thread 0x7fffefb13700 (LWP 2062)]
+[New Thread 0x7fffef312700 (LWP 2063)]
+[Thread 0x7fffefb13700 (LWP 2062) exited]
+[Thread 0x7ffff7faf8c0 (LWP 1907) exited]
+[Inferior 1 (process 1907) exited with code 01]
+Error detected on fd 0
+error detected on stdin

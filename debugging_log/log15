@@ -1,0 +1,17 @@
+Tue Apr 25 01:53:46 EDT 2017
++r
+Starting program: /u/data/u89/wang2226/cs240/lab11-src/IRCClient 
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib64/libthread_db.so.1".
+[Inferior 1 (process 1373) exited with code 0377]
++r 1234
+Starting program: /u/data/u89/wang2226/cs240/lab11-src/IRCClient 1234
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib64/libthread_db.so.1".
+[New Thread 0x7fffefb13700 (LWP 1637)]
+[New Thread 0x7fffef312700 (LWP 1638)]
+[Thread 0x7fffefb13700 (LWP 1637) exited]
+[Thread 0x7ffff7faf8c0 (LWP 1464) exited]
+[Inferior 1 (process 1464) exited with code 01]
+Error detected on fd 0
+error detected on stdin
