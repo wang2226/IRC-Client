@@ -49,3 +49,5 @@ Breakpoint 1, update_list_rooms () at IRCClient.cc:125
 158	void update_list_users() {
 159		GtkTreeIter iterator;
 160		int i;
+Error detected on fd 0
+error detected on stdin

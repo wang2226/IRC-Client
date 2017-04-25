@@ -25,15 +25,12 @@ char * room = (char *) malloc (50 * sizeof(char));
 char * sport = (char *) malloc (20 * sizeof(char));
 char * args = (char *) malloc (300 * sizeof(char));
 int port ;
+int roomCount = 0;
 int user_exist = 0;
 int room_exist = 0;
 int messages_exist = 0;
 char * pre_value = NULL;
 int lastMsgNum = 0;
-
-pthread_mutex_t room_mutex;
-pthread_mutex_t user_mutex;
-pthread_mutex_t message_mutex;
 
 int open_client_socket(const char * host, int port) {
 	// Initialize socket address structure
@@ -103,8 +100,7 @@ int sendCommand(const char * host, int port, const char * command, const char * 
 		len += n;
 	}
 
-	printf("response:\n");
-	printf("%s\n", response);
+	printf("response:%s\n", response);
 
 	close(sock);
 	return 1;
@@ -113,22 +109,25 @@ int sendCommand(const char * host, int port, const char * command, const char * 
 void send_message() {
 	char response[ MAX_RESPONSE ] = {0};
 	response[0] = '\0';
-
 	args = strdup(room);
 	strcat(args, " ");
 	strcat(args, message);
 	sendCommand(host, port, "SEND-MESSAGE", user, password, args, response);
 	if (!strcmp(response,"OK\r\n")) {
 		messages_exist = 1;
-		printf("Message: %s sent\n", args);
+		printf("Message %s sent\n", args);
 	}
 }
 
 void update_list_rooms() {
 	GtkTreeIter iter;
 	int i;
-	char * buffer = NULL;
-	gchar *msg = NULL;
+	char * temp = (char *) malloc (30 * sizeof(char));
+	gchar *msg;
+
+	// Clear rooms list
+	gtk_list_store_clear(GTK_LIST_STORE (list_rooms));
+	roomCount = 0;
 
 	/* Add some messages to the window */
 	if (user_exist == 1) {
@@ -136,76 +135,77 @@ void update_list_rooms() {
 		responserooms[0] = '\0';
 		sendCommand(host, port, "LIST-ROOMS", user, password, "default", responserooms);
 
-		buffer = strdup(responserooms);
-		buffer = strtok(buffer, "\r\n");
-		if(buffer != NULL){
-			msg = g_strdup_printf ("%s", buffer);
+		printf("list rooms response: %s\n", responserooms);
+
+		temp = strtok(responserooms, "\r\n");
+		if(temp != NULL){
+			msg = g_strdup_printf ("%s", temp);
     			gtk_list_store_append (GTK_LIST_STORE (list_rooms), &iter);
     			gtk_list_store_set (GTK_LIST_STORE (list_rooms), &iter, 0, msg, -1);
-			printf("list rooms: %s\n", msg);	        
+			roomCount++;
+			printf("No%d ROOM: %s\n", roomCount, msg);	        
 		}
 		
-		while ((buffer = strtok(NULL, "\r\n")) != NULL) {
-			msg = g_strdup_printf ("%s", buffer);
+		while ((temp = strtok(NULL, "\r\n")) != NULL) {
+
+			msg = g_strdup_printf ("%s", temp);
 			gtk_list_store_append (GTK_LIST_STORE (list_rooms), &iter);
 	        	gtk_list_store_set (GTK_LIST_STORE (list_rooms), &iter, 0, msg, -1);
-			printf("list rooms: %s\n", msg);	        
+			roomCount++;
+			printf("No%d ROOM: %s\n", roomCount, msg);	        
 		}
 
-		if(msg != NULL)
-			g_free(msg);
 	}
-	if(buffer != NULL)
-		free(buffer);
+	free(temp);
 }
 
 void update_list_users() {
 	GtkTreeIter iterator;
 	int i;
-	char * buffer = NULL;
-	gchar *msg = NULL;
+	char * temp = (char *) malloc (30 * sizeof(char));
+	gchar *msg;
+
+	// Clear users list
+	gtk_list_store_clear(GTK_LIST_STORE (list_users));
 
 	//Add some messages to the window
 	if (user_exist == 1) {    	
 		char responseuser[ MAX_RESPONSE ] = {0};
 		responseuser[0] = '\0';
 
-		if (strlen(room) != 0) {
+		if (room != NULL) {
 			sendCommand(host, port, "GET-USERS-IN-ROOM", user, password, room, responseuser);
-			buffer = strdup(responseuser);
-			buffer = strtok(buffer, "\r\n");
-			if( buffer != NULL){
-				msg = g_strdup_printf ("%s", buffer);
+			temp = strdup(responseuser);
+			temp = strtok(temp, "\r\n");
+			if( temp != NULL){
+				msg = g_strdup_printf ("%s", temp);
     				gtk_list_store_append (GTK_LIST_STORE (list_users), &iterator);
     				gtk_list_store_set (GTK_LIST_STORE (list_users), &iterator, 0, msg, -1);
-				printf("list users: %s\n",  msg);	        
+				printf("User: %s\n", msg);	        
 			}
 
-			while ((buffer = strtok(NULL, "\r\n")) != NULL) {
-				msg = g_strdup_printf ("%s", buffer);
+			while ((temp = strtok(NULL, "\r\n")) != NULL) {
+				msg = g_strdup_printf ("%s", temp);
 	       			gtk_list_store_append (GTK_LIST_STORE (list_users), &iterator);
 	        		gtk_list_store_set (GTK_LIST_STORE (list_users), &iterator, 0, msg, -1);
-				printf("list users: %s\n",  msg);	        
+				printf("User: %s\n", msg);	        
 			}
-			if(msg != NULL)
-				g_free(msg);
 		}
+
 	}
-	if(buffer != NULL)
-		free(buffer);
+	free(temp);
 }
 
 static void update_list_messages() {
 	GtkTreeIter iterators;
 	int i;
-	char * buffer = NULL;
-	gchar *msg = NULL;
+	char * buffer = (char *) malloc (300 * sizeof(char));
+	gchar *msg;
 
 	//Add some messages to the window
-	if (messages_exist == 1 && strlen(user) != 0 && strlen(room) != 0) {    
+	if (messages_exist == 1) {    
 		char responsemessage[ MAX_RESPONSE ] = {0};
 		responsemessage[0] = '\0';
-
 		sprintf(args,"%d %s", lastMsgNum, room);
 		sendCommand(host, port, "GET-MESSAGES", user, password, args, responsemessage);
 		buffer = strdup(responsemessage);
@@ -214,48 +214,38 @@ static void update_list_messages() {
 			msg = g_strdup_printf ("%s", buffer);
 			gtk_list_store_append (GTK_LIST_STORE (list_messages), &iterators);
 			gtk_list_store_set (GTK_LIST_STORE (list_messages), &iterators, 0, msg, -1);
-			printf("list messages: %s\n",  msg);	        
 		}
 
 		while ((buffer = strtok(NULL, "\r\n")) != NULL) {
 			msg = g_strdup_printf ("%s", buffer);
 			gtk_list_store_append (GTK_LIST_STORE (list_messages), &iterators);
 			gtk_list_store_set (GTK_LIST_STORE (list_messages), &iterators, 0, msg, -1);
-			printf("list messages: %s\n",  msg);	        
 		}
-		if(msg != NULL)
-			g_free(msg);
+
 	}
-	if(buffer != NULL)
-		free (buffer);
+	free (buffer);
 }
 
 static void get_messages() {
-	// Clear message list
-	pthread_mutex_lock(&message_mutex);
-	gtk_list_store_clear(GTK_LIST_STORE (list_messages));
+	gtk_list_store_clear(GTK_LIST_STORE(list_messages));
+	messages_exist = 1;
 	update_list_messages();
-	pthread_mutex_unlock(&message_mutex);
 }
 
-void create_room(char * croom) {
+void create_room() {
 	char response[ MAX_RESPONSE ] = {0};
 	response[0] = '\0';
-
-	sendCommand(host, port, "CREATE-ROOM", user, password, croom, response);
+	sendCommand(host, port, "CREATE-ROOM", user, password, room, response);
 	if (!strcmp(response,"DENIED\r\n")) {
 		printf("Room couldn't be added because password error\n");
+		room_exist = 1;
 		return;	
 	} else if (!strcmp(response, "OK\r\n")) {
-		user_exist = 1;
-
-		// Clear rooms list
-		pthread_mutex_lock(&room_mutex);
-		gtk_list_store_clear(GTK_LIST_STORE (list_rooms));
-		update_list_rooms();
-		pthread_mutex_unlock(&room_mutex);
-
+		room_exist = 1;
 		printf("Room %s added\n", room);
+		user_exist = 1;
+		gtk_list_store_clear(GTK_LIST_STORE(list_rooms));
+		update_list_rooms();
 	}
 }
 
@@ -263,17 +253,13 @@ void enter_room() {
 	char response[ MAX_RESPONSE ] = {0};
 	response[0] = '\0';
 	sendCommand(host, port, "ENTER-ROOM", user, password, room, response);
-
 	if (!strcmp(response, "OK\r\n")) {
-		message = g_strdup_printf("%s %s",  "entered room:", room);
+		sprintf(message, "%s %s",  "entered room:", room);
 		send_message();
-		// Clear users list
-		pthread_mutex_lock(&user_mutex);
-		gtk_list_store_clear(GTK_LIST_STORE (list_users));
+		update_list_rooms();
 		update_list_users();
-		pthread_mutex_unlock(&user_mutex);
-		get_messages();
-		printf("%s enter room:%s\n", user, room);
+//		get_messages();
+		printf("User %s added\n", user);
 	}
 }
 
@@ -282,13 +268,13 @@ void leave_room(char * troom) {
 	response[0] = '\0';
 	strcpy(args, troom);
 
-	message = g_strdup_printf("%s %s", "leaves room:", troom);
+	sprintf(message, "%s %s", "leaves room:", room);
 	send_message();
 
 	sendCommand(host, port, "LEAVE-ROOM", user, password, args, response);
 	if (!strcmp(response,"OK\r\n")) {
-		printf("User %s leave room:%s\n", user, troom);
-		room = (char *)"";
+		update_list_rooms();
+		printf("User %s removed\n", user);
 	}
 }
 
@@ -296,21 +282,14 @@ void add_user() {
 	// Try first to add user in case it does not exist.
 	char responseadduser[ MAX_RESPONSE ] = {0};
 	responseadduser[0] = '\0';
-
 	sendCommand(host, port, "ADD-USER", user, password, "default", responseadduser);
 	if (!strcmp(responseadduser, "OK\r\n")) {
-		user_exist = 1;
-
-		// Clear rooms list
-		pthread_mutex_lock(&room_mutex);
-		gtk_list_store_clear(GTK_LIST_STORE (list_rooms));
-		update_list_rooms();
-		pthread_mutex_unlock(&room_mutex);
-
 		printf("User %s added\n", user);
-	} else if (!strcmp(responseadduser, "DENIED\r\n")) {
 		user_exist = 1;
+		update_list_rooms();
+	} else if (!strcmp(responseadduser, "DENIED\r\n")) {
 		printf("User %s logged in\n", user);
+		user_exist = 1;
 	}
 }
 
@@ -357,35 +336,35 @@ static void enter_room_name(GtkWidget *entry) {
 	const gchar *entry_text;
 	entry_text = gtk_entry_get_text (GTK_ENTRY (entry));
 	printf("Entry contents: %s\n", entry_text);
-	char * croom = strdup(entry_text);	
-	create_room(croom);	
+	room = strdup(entry_text);	
+	create_room();	
 }
 
 static void click_changed(GtkWidget * widget, GtkWidget * Widgetone) {
 	//get the new room name and leave user from previous room
 	GtkTreeIter iter;
  	GtkTreeModel *model;
-	gchar * value;
+	char * value;
 	
 	if (gtk_tree_selection_get_selected(GTK_TREE_SELECTION(selection), &model, &iter)) {
 	        gtk_tree_model_get(model, &iter, 0, &value,  -1);
-		printf("New Room:%s\n", value);
+		printf("%s\n", value);
+		room = strdup(value);
 
 		if (pre_value == NULL) {
 			printf("pre_value is null\n");
-			room = strdup(value);
 			enter_room();
 		} else {
 			printf("pre_room = %s\n", pre_value);
 			leave_room(pre_value);
-			room = strdup(value);
 			enter_room();
+			gtk_list_store_clear(GTK_LIST_STORE(list_users));
+			update_list_users();
 		}
 
 		messages_exist = 1;
 		pre_value = strdup(value);
  	}
-	g_free(value);
 }
 
 static void message_callback(GtkWidget *entry) {
@@ -400,19 +379,13 @@ static void message_callback(GtkWidget *entry) {
 }
 
 static gboolean time_handler(GtkWidget *widget) {
-	// Clear rooms list
-	pthread_mutex_lock(&room_mutex);
-	gtk_list_store_clear(GTK_LIST_STORE (list_rooms));
+	gtk_list_store_clear(GTK_LIST_STORE(list_rooms));
 	update_list_rooms();
-	pthread_mutex_unlock(&room_mutex);
-
-	// Clear users list
-	pthread_mutex_lock(&user_mutex);
-	gtk_list_store_clear(GTK_LIST_STORE (list_users));
-	update_list_users();
-	pthread_mutex_unlock(&user_mutex);
-
-	get_messages();
+	if(strlen(user) != 0 && strlen(room) != 0){
+		gtk_list_store_clear(GTK_LIST_STORE(list_users));
+		update_list_users();
+		get_messages();
+	}
 	return TRUE;
 }
 
@@ -636,3 +609,4 @@ int main( int   argc, char *argv[] ) {
 
 	return 0;
 }
+
