@@ -128,7 +128,6 @@ void update_list_rooms() {
 	GtkTreeIter iter;
 	int i;
 	char * buffer = NULL;
-	gchar *msg = NULL;
 
 	/* Add some messages to the window */
 	if (user_exist == 1) {
@@ -139,6 +138,7 @@ void update_list_rooms() {
 		buffer = strdup(responserooms);
 		buffer = strtok(buffer, "\r\n");
 		if(buffer != NULL){
+			gchar * msg;
 			msg = g_strdup_printf ("%s", buffer);
     			gtk_list_store_append (GTK_LIST_STORE (list_rooms), &iter);
     			gtk_list_store_set (GTK_LIST_STORE (list_rooms), &iter, 0, msg, -1);
@@ -147,6 +147,7 @@ void update_list_rooms() {
 		}
 		
 		while ((buffer = strtok(NULL, "\r\n")) != NULL) {
+			gchar * msg;
 			msg = g_strdup_printf ("%s", buffer);
 			gtk_list_store_append (GTK_LIST_STORE (list_rooms), &iter);
 	        	gtk_list_store_set (GTK_LIST_STORE (list_rooms), &iter, 0, msg, -1);
@@ -155,15 +156,14 @@ void update_list_rooms() {
 		}
 
 	}
-	if(buffer != NULL)
-		free(buffer);
+//	if(buffer != NULL)
+//		free(buffer);
 }
 
 void update_list_users() {
 	GtkTreeIter iterator;
 	int i;
 	char * buffer = NULL;
-	gchar *msg = NULL;
 
 	//Add some messages to the window
 	if (user_exist == 1) {    	
@@ -175,6 +175,7 @@ void update_list_users() {
 			buffer = strdup(responseuser);
 			buffer = strtok(buffer, "\r\n");
 			if( buffer != NULL){
+				gchar * msg;
 				msg = g_strdup_printf ("%s", buffer);
     				gtk_list_store_append (GTK_LIST_STORE (list_users), &iterator);
     				gtk_list_store_set (GTK_LIST_STORE (list_users), &iterator, 0, msg, -1);
@@ -183,6 +184,7 @@ void update_list_users() {
 			}
 
 			while ((buffer = strtok(NULL, "\r\n")) != NULL) {
+				gchar * msg;
 				msg = g_strdup_printf ("%s", buffer);
 	       			gtk_list_store_append (GTK_LIST_STORE (list_users), &iterator);
 	        		gtk_list_store_set (GTK_LIST_STORE (list_users), &iterator, 0, msg, -1);
@@ -191,15 +193,14 @@ void update_list_users() {
 			}
 		}
 	}
-	if(buffer != NULL)
-		free(buffer);
+//	if(buffer != NULL)
+//		free(buffer);
 }
 
 static void update_list_messages() {
 	GtkTreeIter iterators;
 	int i;
 	char * buffer = NULL;
-	gchar *msg = NULL;
 
 	//Add some messages to the window
 	if (messages_exist == 1 && strlen(user) != 0 && strlen(room) != 0) {    
@@ -211,6 +212,7 @@ static void update_list_messages() {
 		buffer = strdup(responsemessage);
 		buffer = strtok(buffer, "\r\n");
 		if(buffer != NULL){
+			gchar * msg ;
 			msg = g_strdup_printf ("%s", buffer);
 			gtk_list_store_append (GTK_LIST_STORE (list_messages), &iterators);
 			gtk_list_store_set (GTK_LIST_STORE (list_messages), &iterators, 0, msg, -1);
@@ -219,6 +221,7 @@ static void update_list_messages() {
 		}
 
 		while ((buffer = strtok(NULL, "\r\n")) != NULL) {
+			gchar * msg ;
 			msg = g_strdup_printf ("%s", buffer);
 			gtk_list_store_append (GTK_LIST_STORE (list_messages), &iterators);
 			gtk_list_store_set (GTK_LIST_STORE (list_messages), &iterators, 0, msg, -1);
@@ -226,8 +229,8 @@ static void update_list_messages() {
 			g_free(msg);
 		}
 	}
-	if(buffer != NULL)
-		free (buffer);
+//	if(buffer != NULL)
+//		free (buffer);
 }
 
 static void get_messages() {
