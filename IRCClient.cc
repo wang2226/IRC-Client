@@ -114,9 +114,10 @@ void send_message() {
 	char response[ MAX_RESPONSE ] = {0};
 	response[0] = '\0';
 
-	args = strdup(room);
-	strcat(args, " ");
-	strcat(args, message);
+//	args = strdup(room);
+//	strcat(args, " ");
+//	strcat(args, message);
+	sprintf(args, "%s %s", room, message);
 	sendCommand(host, port, "SEND-MESSAGE", user, password, args, response);
 	if (!strcmp(response,"OK\r\n")) {
 		messages_exist = 1;

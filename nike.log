@@ -1,0 +1,178 @@
+==3956== Memcheck, a memory error detector
+==3956== Copyright (C) 2002-2013, and GNU GPL'd, by Julian Seward et al.
+==3956== Using Valgrind-3.10.1 and LibVEX; rerun with -h for copyright info
+==3956== Command: ./IRCClient 1234
+==3956== 
+==3956== Conditional jump or move depends on uninitialised value(s)
+==3956==    at 0x402BE3: update_list_users() (IRCClient.cc:173)
+==3956==    by 0x403AE9: time_handler(_GtkWidget*) (IRCClient.cc:415)
+==3956==    by 0x6B34642: ??? (in /usr/lib64/libglib-2.0.so.0.4600.2)
+==3956==    by 0x6B33BAC: g_main_context_dispatch (in /usr/lib64/libglib-2.0.so.0.4600.2)
+==3956==    by 0x6B33F7F: ??? (in /usr/lib64/libglib-2.0.so.0.4600.2)
+==3956==    by 0x6B342A1: g_main_loop_run (in /usr/lib64/libglib-2.0.so.0.4600.2)
+==3956==    by 0x4F65136: gtk_main (in /usr/lib64/libgtk-x11-2.0.so.0.2400.29)
+==3956==    by 0x404709: main (IRCClient.cc:638)
+==3956== 
+==3956== Invalid write of size 2
+==3956==    at 0x402837: send_message() (IRCClient.cc:118)
+==3956==    by 0x403352: enter_room() (IRCClient.cc:272)
+==3956==    by 0x40395E: click_changed(_GtkWidget*, _GtkWidget*) (IRCClient.cc:380)
+==3956==    by 0x68A6F74: g_closure_invoke (in /usr/lib64/libgobject-2.0.so.0.4600.2)
+==3956==    by 0x68B92C0: ??? (in /usr/lib64/libgobject-2.0.so.0.4600.2)
+==3956==    by 0x68C1D64: g_signal_emit_valist (in /usr/lib64/libgobject-2.0.so.0.4600.2)
+==3956==    by 0x68C1FC6: g_signal_emit (in /usr/lib64/libgobject-2.0.so.0.4600.2)
+==3956==    by 0x5065C88: ??? (in /usr/lib64/libgtk-x11-2.0.so.0.2400.29)
+==3956==    by 0x4F675DE: ??? (in /usr/lib64/libgtk-x11-2.0.so.0.2400.29)
+==3956==    by 0x68A6F74: g_closure_invoke (in /usr/lib64/libgobject-2.0.so.0.4600.2)
+==3956==    by 0x68B91B9: ??? (in /usr/lib64/libgobject-2.0.so.0.4600.2)
+==3956==    by 0x68C1853: g_signal_emit_valist (in /usr/lib64/libgobject-2.0.so.0.4600.2)
+==3956==  Address 0xedb6dcd is 13 bytes inside a block of size 14 alloc'd
+==3956==    at 0x4C29F80: malloc (in /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3956==    by 0x75B3419: strdup (in /lib64/libc-2.22.so)
+==3956==    by 0x402804: send_message() (IRCClient.cc:117)
+==3956==    by 0x403352: enter_room() (IRCClient.cc:272)
+==3956==    by 0x40395E: click_changed(_GtkWidget*, _GtkWidget*) (IRCClient.cc:380)
+==3956==    by 0x68A6F74: g_closure_invoke (in /usr/lib64/libgobject-2.0.so.0.4600.2)
+==3956==    by 0x68B92C0: ??? (in /usr/lib64/libgobject-2.0.so.0.4600.2)
+==3956==    by 0x68C1D64: g_signal_emit_valist (in /usr/lib64/libgobject-2.0.so.0.4600.2)
+==3956==    by 0x68C1FC6: g_signal_emit (in /usr/lib64/libgobject-2.0.so.0.4600.2)
+==3956==    by 0x5065C88: ??? (in /usr/lib64/libgtk-x11-2.0.so.0.2400.29)
+==3956==    by 0x4F675DE: ??? (in /usr/lib64/libgtk-x11-2.0.so.0.2400.29)
+==3956==    by 0x68A6F74: g_closure_invoke (in /usr/lib64/libgobject-2.0.so.0.4600.2)
+==3956== 
+==3956== Invalid read of size 1
+==3956==    at 0x4C2D1D4: strcat (in /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3956==    by 0x402854: send_message() (IRCClient.cc:119)
+==3956==    by 0x403352: enter_room() (IRCClient.cc:272)
+==3956==    by 0x40395E: click_changed(_GtkWidget*, _GtkWidget*) (IRCClient.cc:380)
+==3956==    by 0x68A6F74: g_closure_invoke (in /usr/lib64/libgobject-2.0.so.0.4600.2)
+==3956==    by 0x68B92C0: ??? (in /usr/lib64/libgobject-2.0.so.0.4600.2)
+==3956==    by 0x68C1D64: g_signal_emit_valist (in /usr/lib64/libgobject-2.0.so.0.4600.2)
+==3956==    by 0x68C1FC6: g_signal_emit (in /usr/lib64/libgobject-2.0.so.0.4600.2)
+==3956==    by 0x5065C88: ??? (in /usr/lib64/libgtk-x11-2.0.so.0.2400.29)
+==3956==    by 0x4F675DE: ??? (in /usr/lib64/libgtk-x11-2.0.so.0.2400.29)
+==3956==    by 0x68A6F74: g_closure_invoke (in /usr/lib64/libgobject-2.0.so.0.4600.2)
+==3956==    by 0x68B91B9: ??? (in /usr/lib64/libgobject-2.0.so.0.4600.2)
+==3956==  Address 0xedb6dce is 0 bytes after a block of size 14 alloc'd
+==3956==    at 0x4C29F80: malloc (in /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3956==    by 0x75B3419: strdup (in /lib64/libc-2.22.so)
+==3956==    by 0x402804: send_message() (IRCClient.cc:117)
+==3956==    by 0x403352: enter_room() (IRCClient.cc:272)
+==3956==    by 0x40395E: click_changed(_GtkWidget*, _GtkWidget*) (IRCClient.cc:380)
+==3956==    by 0x68A6F74: g_closure_invoke (in /usr/lib64/libgobject-2.0.so.0.4600.2)
+==3956==    by 0x68B92C0: ??? (in /usr/lib64/libgobject-2.0.so.0.4600.2)
+==3956==    by 0x68C1D64: g_signal_emit_valist (in /usr/lib64/libgobject-2.0.so.0.4600.2)
+==3956==    by 0x68C1FC6: g_signal_emit (in /usr/lib64/libgobject-2.0.so.0.4600.2)
+==3956==    by 0x5065C88: ??? (in /usr/lib64/libgtk-x11-2.0.so.0.2400.29)
+==3956==    by 0x4F675DE: ??? (in /usr/lib64/libgtk-x11-2.0.so.0.2400.29)
+==3956==    by 0x68A6F74: g_closure_invoke (in /usr/lib64/libgobject-2.0.so.0.4600.2)
+==3956== 
+==3956== Invalid write of size 1
+==3956==    at 0x4C2D1F0: strcat (in /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3956==    by 0x402854: send_message() (IRCClient.cc:119)
+==3956==    by 0x403352: enter_room() (IRCClient.cc:272)
+==3956==    by 0x40395E: click_changed(_GtkWidget*, _GtkWidget*) (IRCClient.cc:380)
+==3956==    by 0x68A6F74: g_closure_invoke (in /usr/lib64/libgobject-2.0.so.0.4600.2)
+==3956==    by 0x68B92C0: ??? (in /usr/lib64/libgobject-2.0.so.0.4600.2)
+==3956==    by 0x68C1D64: g_signal_emit_valist (in /usr/lib64/libgobject-2.0.so.0.4600.2)
+==3956==    by 0x68C1FC6: g_signal_emit (in /usr/lib64/libgobject-2.0.so.0.4600.2)
+==3956==    by 0x5065C88: ??? (in /usr/lib64/libgtk-x11-2.0.so.0.2400.29)
+==3956==    by 0x4F675DE: ??? (in /usr/lib64/libgtk-x11-2.0.so.0.2400.29)
+==3956==    by 0x68A6F74: g_closure_invoke (in /usr/lib64/libgobject-2.0.so.0.4600.2)
+==3956==    by 0x68B91B9: ??? (in /usr/lib64/libgobject-2.0.so.0.4600.2)
+==3956==  Address 0xedb6dce is 0 bytes after a block of size 14 alloc'd
+==3956==    at 0x4C29F80: malloc (in /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3956==    by 0x75B3419: strdup (in /lib64/libc-2.22.so)
+==3956==    by 0x402804: send_message() (IRCClient.cc:117)
+==3956==    by 0x403352: enter_room() (IRCClient.cc:272)
+==3956==    by 0x40395E: click_changed(_GtkWidget*, _GtkWidget*) (IRCClient.cc:380)
+==3956==    by 0x68A6F74: g_closure_invoke (in /usr/lib64/libgobject-2.0.so.0.4600.2)
+==3956==    by 0x68B92C0: ??? (in /usr/lib64/libgobject-2.0.so.0.4600.2)
+==3956==    by 0x68C1D64: g_signal_emit_valist (in /usr/lib64/libgobject-2.0.so.0.4600.2)
+==3956==    by 0x68C1FC6: g_signal_emit (in /usr/lib64/libgobject-2.0.so.0.4600.2)
+==3956==    by 0x5065C88: ??? (in /usr/lib64/libgtk-x11-2.0.so.0.2400.29)
+==3956==    by 0x4F675DE: ??? (in /usr/lib64/libgtk-x11-2.0.so.0.2400.29)
+==3956==    by 0x68A6F74: g_closure_invoke (in /usr/lib64/libgobject-2.0.so.0.4600.2)
+==3956== 
+
+valgrind: m_mallocfree.c:304 (get_bszB_as_is): Assertion 'bszB_lo == bszB_hi' failed.
+valgrind: Heap block lo/hi size mismatch: lo = 80, hi = 103.
+This is probably caused by your program erroneously writing past the
+end of a heap block and corrupting heap metadata.  If you fix any
+invalid writes reported by Memcheck, this assertion failure will
+probably go away.  Please try that before reporting this as a bug.
+
+
+host stacktrace:
+==3956==    at 0x380A918F: ??? (in /usr/lib64/valgrind/memcheck-amd64-linux)
+==3956==    by 0x380A92B4: ??? (in /usr/lib64/valgrind/memcheck-amd64-linux)
+==3956==    by 0x380A943E: ??? (in /usr/lib64/valgrind/memcheck-amd64-linux)
+==3956==    by 0x380B603D: ??? (in /usr/lib64/valgrind/memcheck-amd64-linux)
+==3956==    by 0x380A2553: ??? (in /usr/lib64/valgrind/memcheck-amd64-linux)
+==3956==    by 0x380A0FFB: ??? (in /usr/lib64/valgrind/memcheck-amd64-linux)
+==3956==    by 0x380A4E7A: ??? (in /usr/lib64/valgrind/memcheck-amd64-linux)
+==3956==    by 0x380A0572: ??? (in /usr/lib64/valgrind/memcheck-amd64-linux)
+==3956==    by 0x802C6A657: ???
+==3956==    by 0x802B99EEF: ???
+==3956==    by 0x39C5515F: ???
+==3956==    by 0x75CB38F: ??? (in /lib64/libc-2.22.so)
+
+sched status:
+  running_tid=1
+
+Thread 1: status = VgTs_Runnable
+==3956==    at 0x4C2D203: strcat (in /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3956==    by 0x402854: send_message() (IRCClient.cc:119)
+==3956==    by 0x403352: enter_room() (IRCClient.cc:272)
+==3956==    by 0x40395E: click_changed(_GtkWidget*, _GtkWidget*) (IRCClient.cc:380)
+==3956==    by 0x68A6F74: g_closure_invoke (in /usr/lib64/libgobject-2.0.so.0.4600.2)
+==3956==    by 0x68B92C0: ??? (in /usr/lib64/libgobject-2.0.so.0.4600.2)
+==3956==    by 0x68C1D64: g_signal_emit_valist (in /usr/lib64/libgobject-2.0.so.0.4600.2)
+==3956==    by 0x68C1FC6: g_signal_emit (in /usr/lib64/libgobject-2.0.so.0.4600.2)
+==3956==    by 0x5065C88: ??? (in /usr/lib64/libgtk-x11-2.0.so.0.2400.29)
+==3956==    by 0x4F675DE: ??? (in /usr/lib64/libgtk-x11-2.0.so.0.2400.29)
+==3956==    by 0x68A6F74: g_closure_invoke (in /usr/lib64/libgobject-2.0.so.0.4600.2)
+==3956==    by 0x68B91B9: ??? (in /usr/lib64/libgobject-2.0.so.0.4600.2)
+==3956==    by 0x68C1853: g_signal_emit_valist (in /usr/lib64/libgobject-2.0.so.0.4600.2)
+==3956==    by 0x68C1FC6: g_signal_emit (in /usr/lib64/libgobject-2.0.so.0.4600.2)
+==3956==    by 0x507E63B: ??? (in /usr/lib64/libgtk-x11-2.0.so.0.2400.29)
+==3956==    by 0x4F65D23: gtk_propagate_event (in /usr/lib64/libgtk-x11-2.0.so.0.2400.29)
+==3956==    by 0x4F661BA: gtk_main_do_event (in /usr/lib64/libgtk-x11-2.0.so.0.2400.29)
+==3956==    by 0x54D831B: ??? (in /usr/lib64/libgdk-x11-2.0.so.0.2400.29)
+==3956==    by 0x6B33C9C: g_main_context_dispatch (in /usr/lib64/libglib-2.0.so.0.4600.2)
+==3956==    by 0x6B33F7F: ??? (in /usr/lib64/libglib-2.0.so.0.4600.2)
+==3956==    by 0x6B342A1: g_main_loop_run (in /usr/lib64/libglib-2.0.so.0.4600.2)
+==3956==    by 0x4F65136: gtk_main (in /usr/lib64/libgtk-x11-2.0.so.0.2400.29)
+==3956==    by 0x404709: main (IRCClient.cc:638)
+
+Thread 2: status = VgTs_WaitSys
+==3956==    at 0x7612D4D: ??? (in /lib64/libc-2.22.so)
+==3956==    by 0x6B33F1B: ??? (in /usr/lib64/libglib-2.0.so.0.4600.2)
+==3956==    by 0x6B3402B: g_main_context_iteration (in /usr/lib64/libglib-2.0.so.0.4600.2)
+==3956==    by 0x6B34068: ??? (in /usr/lib64/libglib-2.0.so.0.4600.2)
+==3956==    by 0x6B59CC4: ??? (in /usr/lib64/libglib-2.0.so.0.4600.2)
+==3956==    by 0x731D443: start_thread (in /lib64/libpthread-2.22.so)
+==3956==    by 0x761BDAC: clone (in /lib64/libc-2.22.so)
+
+Thread 3: status = VgTs_WaitSys
+==3956==    at 0x7612D4D: ??? (in /lib64/libc-2.22.so)
+==3956==    by 0x6B33F1B: ??? (in /usr/lib64/libglib-2.0.so.0.4600.2)
+==3956==    by 0x6B342A1: g_main_loop_run (in /usr/lib64/libglib-2.0.so.0.4600.2)
+==3956==    by 0x6194455: ??? (in /usr/lib64/libgio-2.0.so.0.4600.2)
+==3956==    by 0x6B59CC4: ??? (in /usr/lib64/libglib-2.0.so.0.4600.2)
+==3956==    by 0x731D443: start_thread (in /lib64/libpthread-2.22.so)
+==3956==    by 0x761BDAC: clone (in /lib64/libc-2.22.so)
+
+
+Note: see also the FAQ in the source distribution.
+It contains workarounds to several common problems.
+In particular, if Valgrind aborted or crashed after
+identifying problems in your program, there's a good chance
+that fixing those problems will prevent Valgrind aborting or
+crashing, especially if it happened in m_mallocfree.c.
+
+If that doesn't help, please report this bug to: www.valgrind.org
+
+In the bug report, send all the above text, the valgrind
+version, and what OS and version you are using.  Thanks.
+
