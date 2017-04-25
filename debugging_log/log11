@@ -1,0 +1,88 @@
+Mon Apr 24 23:47:38 EDT 2017
++b 217
+Breakpoint 1 at 0x402fa3: file IRCClient.cc, line 217.
++r 1234
+Starting program: /u/data/u89/wang2226/cs240/lab11-src/IRCClient 1234
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib64/libthread_db.so.1".
+[New Thread 0x7fffef578700 (LWP 26087)]
+[New Thread 0x7fffeed77700 (LWP 26088)]
+
+Breakpoint 1, update_list_messages () at IRCClient.cc:217
+217				gtk_list_store_append (GTK_LIST_STORE (list_messages), &iterators);
++s
+218				gtk_list_store_set (GTK_LIST_STORE (list_messages), &iterators, 0, msg, -1);
++n
+219				printf("list messages: %s\n",  msg);	        
++n
+220				g_free(msg);
++n
+223			while ((buffer = strtok(NULL, "\r\n")) != NULL) {
++n
+225				msg = g_strdup_printf ("%s", buffer);
++n
+226				gtk_list_store_append (GTK_LIST_STORE (list_messages), &iterators);
++p buffer
+$1 = 0x67691a "2 superman Welcome to the talk program!"
++p msg
+$2 = (gchar *) 0x731fa0 "2 superman Welcome to the talk program!"
++n
+227				gtk_list_store_set (GTK_LIST_STORE (list_messages), &iterators, 0, msg, -1);
++n
+228				printf("list messages: %s\n",  msg);	        
++n
+229				g_free(msg);
++n
+223			while ((buffer = strtok(NULL, "\r\n")) != NULL) {
++n
+225				msg = g_strdup_printf ("%s", buffer);
++p buffer
+$3 = 0x676943 "3 mary entered room: java-programming"
++p msg
+$4 = (gchar *) 0x731fa0 ""
++n
+226				gtk_list_store_append (GTK_LIST_STORE (list_messages), &iterators);
++p msg
+$5 = (gchar *) 0x731fa0 "3 mary entered room: java-programming"
++n
+227				gtk_list_store_set (GTK_LIST_STORE (list_messages), &iterators, 0, msg, -1);
++n
+228				printf("list messages: %s\n",  msg);	        
++n
+229				g_free(msg);
++n
+223			while ((buffer = strtok(NULL, "\r\n")) != NULL) {
++n
+225				msg = g_strdup_printf ("%s", buffer);
++p buffer
+$6 = 0x67696a "4 mary entered room: java-programming"
++n
+226				gtk_list_store_append (GTK_LIST_STORE (list_messages), &iterators);
++p msg
+$7 = (gchar *) 0x731fa0 "4 mary entered room: java-programming"
++n
+227				gtk_list_store_set (GTK_LIST_STORE (list_messages), &iterators, 0, msg, -1);
++n
+228				printf("list messages: %s\n",  msg);	        
++n
+229				g_free(msg);
++n
+223			while ((buffer = strtok(NULL, "\r\n")) != NULL) {
++n
+225				msg = g_strdup_printf ("%s", buffer);
++p buffer
+$8 = 0x676991 "5 mary entered room: java-programming"
++n
+226				gtk_list_store_append (GTK_LIST_STORE (list_messages), &iterators);
++n
+227				gtk_list_store_set (GTK_LIST_STORE (list_messages), &iterators, 0, msg, -1);
++n
+228				printf("list messages: %s\n",  msg);	        
++n
+229				g_free(msg);
++n
+223			while ((buffer = strtok(NULL, "\r\n")) != NULL) {
++n
+234	}
++kill
++quit

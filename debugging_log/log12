@@ -1,0 +1,288 @@
+Mon Apr 24 23:57:27 EDT 2017
++b 217
+Breakpoint 1 at 0x402fa3: file IRCClient.cc, line 217.
++r 1234
+Starting program: /u/data/u89/wang2226/cs240/lab11-src/IRCClient 1234
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib64/libthread_db.so.1".
+[New Thread 0x7fffef578700 (LWP 6455)]
+[New Thread 0x7fffeed77700 (LWP 6456)]
+
+Breakpoint 1, update_list_messages () at IRCClient.cc:217
+217				gtk_list_store_append (GTK_LIST_STORE (list_messages), &iterators);
++s
+218				gtk_list_store_set (GTK_LIST_STORE (list_messages), &iterators, 0, msg, -1);
++n
+219				printf("list messages: %s\n",  msg);	        
++n
+220				g_free(msg);
++n
+223			while ((buffer = strtok(NULL, "\r\n")) != NULL) {
++n
+225				msg = g_strdup_printf ("%s", buffer);
++p buffer
+$1 = 0x6752ea "2 superman Welcome to the talk program!"
++n
+226				gtk_list_store_append (GTK_LIST_STORE (list_messages), &iterators);
++p msg
+$2 = (gchar *) 0x74af50 "2 superman Welcome to the talk program!"
++n
+227				gtk_list_store_set (GTK_LIST_STORE (list_messages), &iterators, 0, msg, -1);
++n
+228				printf("list messages: %s\n",  msg);	        
++n
+229				g_free(msg);
++n
+223			while ((buffer = strtok(NULL, "\r\n")) != NULL) {
++n
+225				msg = g_strdup_printf ("%s", buffer);
++p buffer
+$3 = 0x675313 "3 mary entered room: java-programming"
++n
+226				gtk_list_store_append (GTK_LIST_STORE (list_messages), &iterators);
++p msg
+$4 = (gchar *) 0x74af50 "3 mary entered room: java-programming"
++n
+227				gtk_list_store_set (GTK_LIST_STORE (list_messages), &iterators, 0, msg, -1);
++n
+228				printf("list messages: %s\n",  msg);	        
++n
+229				g_free(msg);
++n
+223			while ((buffer = strtok(NULL, "\r\n")) != NULL) {
++n
+234	}
++n
+get_messages () at IRCClient.cc:241
+241		pthread_mutex_unlock(&message_mutex);
++n
+242	}
++n
+enter_room () at IRCClient.cc:279
+279			printf("%s enter room:%s\n", user, room);
++n
+281	}
++n
+click_changed (widget=0x686420, Widgetone=0x7171b0) at IRCClient.cc:388
+388			messages_exist = 1;
++n
+389			pre_value = strdup(value);
++n
+391		g_free(value);
++n
+392	}
++n
+0x00007ffff6136f75 in g_closure_invoke () from /usr/lib64/libgobject-2.0.so.0
++n
+Single stepping until exit from function g_closure_invoke,
+which has no line number information.
+0x00007ffff61365d0 in g_closure_unref () from /usr/lib64/libgobject-2.0.so.0
++n
+Single stepping until exit from function g_closure_unref,
+which has no line number information.
+0x00007ffff61492c1 in ?? () from /usr/lib64/libgobject-2.0.so.0
++n
+Cannot find bounds of current function
++n
+Cannot find bounds of current function
++n
+Cannot find bounds of current function
++n
+Cannot find bounds of current function
++c
+Continuing.
+
+Breakpoint 1, update_list_messages () at IRCClient.cc:217
+217				gtk_list_store_append (GTK_LIST_STORE (list_messages), &iterators);
++n
+218				gtk_list_store_set (GTK_LIST_STORE (list_messages), &iterators, 0, msg, -1);
++n
+219				printf("list messages: %s\n",  msg);	        
++n
+220				g_free(msg);
++n
+223			while ((buffer = strtok(NULL, "\r\n")) != NULL) {
++n
+225				msg = g_strdup_printf ("%s", buffer);
++n
+226				gtk_list_store_append (GTK_LIST_STORE (list_messages), &iterators);
++n
+227				gtk_list_store_set (GTK_LIST_STORE (list_messages), &iterators, 0, msg, -1);
++n
+228				printf("list messages: %s\n",  msg);	        
++n
+229				g_free(msg);
++n
+223			while ((buffer = strtok(NULL, "\r\n")) != NULL) {
++n
+225				msg = g_strdup_printf ("%s", buffer);
++n
+226				gtk_list_store_append (GTK_LIST_STORE (list_messages), &iterators);
++n
+227				gtk_list_store_set (GTK_LIST_STORE (list_messages), &iterators, 0, msg, -1);
++n
+228				printf("list messages: %s\n",  msg);	        
++n
+229				g_free(msg);
++n
+223			while ((buffer = strtok(NULL, "\r\n")) != NULL) {
++n
+234	}
++p buffer
+Cannot access memory at address 0xffffeca59878
++n
+get_messages () at IRCClient.cc:241
+241		pthread_mutex_unlock(&message_mutex);
++n
+242	}
++n
+time_handler (widget=0x65f080) at IRCClient.cc:419
+419		return TRUE;
++n
+420	}
++n
+0x00007ffff5e37643 in ?? () from /usr/lib64/libglib-2.0.so.0
++n
+Cannot find bounds of current function
++n
+Cannot find bounds of current function
++n
+Cannot find bounds of current function
++n
+Cannot find bounds of current function
++n
+Cannot find bounds of current function
++c
+Continuing.
+
+Program received signal SIGSEGV, Segmentation fault.
+0x00007ffff4b24d86 in _int_malloc () from /lib64/libc.so.6
++where
+#0  0x00007ffff4b24d86 in _int_malloc () from /lib64/libc.so.6
+#1  0x00007ffff4b26a78 in malloc () from /lib64/libc.so.6
+#2  0x00007ffff23fc0da in ?? () from /usr/lib64/libxcb.so.1
+#3  0x00007ffff23f9d31 in ?? () from /usr/lib64/libxcb.so.1
+#4  0x00007ffff23fa191 in ?? () from /usr/lib64/libxcb.so.1
+#5  0x00007ffff23fa215 in xcb_writev () from /usr/lib64/libxcb.so.1
+#6  0x00007ffff45a83fe in _XSend () from /usr/lib64/libX11.so.6
+#7  0x00007ffff45a84d9 in _XEventsQueued () from /usr/lib64/libX11.so.6
+#8  0x00007ffff459a217 in XPending () from /usr/lib64/libX11.so.6
+#9  0x00007ffff753646e in ?? () from /usr/lib64/libgdk-x11-2.0.so.0
+#10 0x00007ffff5e3645d in g_main_context_prepare ()
+   from /usr/lib64/libglib-2.0.so.0
+#11 0x00007ffff5e36e48 in ?? () from /usr/lib64/libglib-2.0.so.0
+#12 0x00007ffff5e372a2 in g_main_loop_run () from /usr/lib64/libglib-2.0.so.0
+#13 0x00007ffff78c3137 in gtk_main () from /usr/lib64/libgtk-x11-2.0.so.0
+#14 0x000000000040473a in main (argc=2, argv=0x7fffffffe568)
+    at IRCClient.cc:638
++bt
+#0  0x00007ffff4b24d86 in _int_malloc () from /lib64/libc.so.6
+#1  0x00007ffff4b26a78 in malloc () from /lib64/libc.so.6
+#2  0x00007ffff23fc0da in ?? () from /usr/lib64/libxcb.so.1
+#3  0x00007ffff23f9d31 in ?? () from /usr/lib64/libxcb.so.1
+#4  0x00007ffff23fa191 in ?? () from /usr/lib64/libxcb.so.1
+#5  0x00007ffff23fa215 in xcb_writev () from /usr/lib64/libxcb.so.1
+#6  0x00007ffff45a83fe in _XSend () from /usr/lib64/libX11.so.6
+#7  0x00007ffff45a84d9 in _XEventsQueued () from /usr/lib64/libX11.so.6
+#8  0x00007ffff459a217 in XPending () from /usr/lib64/libX11.so.6
+#9  0x00007ffff753646e in ?? () from /usr/lib64/libgdk-x11-2.0.so.0
+#10 0x00007ffff5e3645d in g_main_context_prepare ()
+   from /usr/lib64/libglib-2.0.so.0
+#11 0x00007ffff5e36e48 in ?? () from /usr/lib64/libglib-2.0.so.0
+#12 0x00007ffff5e372a2 in g_main_loop_run () from /usr/lib64/libglib-2.0.so.0
+#13 0x00007ffff78c3137 in gtk_main () from /usr/lib64/libgtk-x11-2.0.so.0
+#14 0x000000000040473a in main (argc=2, argv=0x7fffffffe568)
+    at IRCClient.cc:638
++c
+Continuing.
+[Thread 0x7fffef578700 (LWP 6455) exited]
+[Thread 0x7ffff7fae8c0 (LWP 6420) exited]
+
+Program terminated with signal SIGSEGV, Segmentation fault.
+The program no longer exists.
++bt
+No stack.
++b list
+Function "list" not defined.
++where
+No stack.
++info break
+Num     Type           Disp Enb Address            What
+1       breakpoint     keep y   0x0000000000402fa3 in update_list_messages() 
+                                                   at IRCClient.cc:217
+	breakpoint already hit 2 times
++delete 1
++info break
+No breakpoints or watchpoints.
++r 1234
+Starting program: /u/data/u89/wang2226/cs240/lab11-src/IRCClient 1234
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib64/libthread_db.so.1".
+[New Thread 0x7fffef578700 (LWP 20548)]
+[New Thread 0x7fffeed77700 (LWP 20549)]
+
+Program received signal SIGSEGV, Segmentation fault.
+0x00007ffff4b22f75 in malloc_consolidate () from /lib64/libc.so.6
++where
+#0  0x00007ffff4b22f75 in malloc_consolidate () from /lib64/libc.so.6
+#1  0x00007ffff4b24e0b in _int_malloc () from /lib64/libc.so.6
+#2  0x00007ffff4b26a78 in malloc () from /lib64/libc.so.6
+#3  0x00007ffff5e3c3ad in g_realloc () from /usr/lib64/libglib-2.0.so.0
+#4  0x00007ffff638cac3 in pango_glyph_string_set_size ()
+   from /usr/lib64/libpango-1.0.so.0
+#5  0x00007ffff65d279d in ?? () from /usr/lib64/libpangoft2-1.0.so.0
+#6  0x00007ffff63a40d6 in pango_shape_full () from /usr/lib64/libpango-1.0.so.0
+#7  0x00007ffff6396093 in ?? () from /usr/lib64/libpango-1.0.so.0
+#8  0x00007ffff63978f0 in ?? () from /usr/lib64/libpango-1.0.so.0
+#9  0x00007ffff6399ded in ?? () from /usr/lib64/libpango-1.0.so.0
+#10 0x00007ffff639bb68 in ?? () from /usr/lib64/libpango-1.0.so.0
+#11 0x00007ffff639c066 in pango_layout_get_pixel_extents ()
+   from /usr/lib64/libpango-1.0.so.0
+#12 0x00007ffff782fbb5 in ?? () from /usr/lib64/libgtk-x11-2.0.so.0
+#13 0x00007ffff782ff27 in ?? () from /usr/lib64/libgtk-x11-2.0.so.0
+#14 0x00007ffff79cde2d in gtk_tree_view_column_cell_get_size ()
+   from /usr/lib64/libgtk-x11-2.0.so.0
+#15 0x00007ffff79b5ec1 in ?? () from /usr/lib64/libgtk-x11-2.0.so.0
+#16 0x00007ffff79b8c6f in ?? () from /usr/lib64/libgtk-x11-2.0.so.0
+#17 0x00007ffff79b90a6 in ?? () from /usr/lib64/libgtk-x11-2.0.so.0
+#18 0x00007ffff79b9149 in ?? () from /usr/lib64/libgtk-x11-2.0.so.0
+#19 0x00007ffff74fc5a7 in ?? () from /usr/lib64/libgdk-x11-2.0.so.0
+#20 0x00007ffff5e36bad in g_main_context_dispatch ()
+   from /usr/lib64/libglib-2.0.so.0
+#21 0x00007ffff5e36f80 in ?? () from /usr/lib64/libglib-2.0.so.0
+#22 0x00007ffff5e372a2 in g_main_loop_run () from /usr/lib64/libglib-2.0.so.0
+#23 0x00007ffff78c3137 in gtk_main () from /usr/lib64/libgtk-x11-2.0.so.0
+#24 0x000000000040473a in main (argc=2, argv=0x7fffffffe568)
+    at IRCClient.cc:638
++bt
+#0  0x00007ffff4b22f75 in malloc_consolidate () from /lib64/libc.so.6
+#1  0x00007ffff4b24e0b in _int_malloc () from /lib64/libc.so.6
+#2  0x00007ffff4b26a78 in malloc () from /lib64/libc.so.6
+#3  0x00007ffff5e3c3ad in g_realloc () from /usr/lib64/libglib-2.0.so.0
+#4  0x00007ffff638cac3 in pango_glyph_string_set_size ()
+   from /usr/lib64/libpango-1.0.so.0
+#5  0x00007ffff65d279d in ?? () from /usr/lib64/libpangoft2-1.0.so.0
+#6  0x00007ffff63a40d6 in pango_shape_full () from /usr/lib64/libpango-1.0.so.0
+#7  0x00007ffff6396093 in ?? () from /usr/lib64/libpango-1.0.so.0
+#8  0x00007ffff63978f0 in ?? () from /usr/lib64/libpango-1.0.so.0
+#9  0x00007ffff6399ded in ?? () from /usr/lib64/libpango-1.0.so.0
+#10 0x00007ffff639bb68 in ?? () from /usr/lib64/libpango-1.0.so.0
+#11 0x00007ffff639c066 in pango_layout_get_pixel_extents ()
+   from /usr/lib64/libpango-1.0.so.0
+#12 0x00007ffff782fbb5 in ?? () from /usr/lib64/libgtk-x11-2.0.so.0
+#13 0x00007ffff782ff27 in ?? () from /usr/lib64/libgtk-x11-2.0.so.0
+#14 0x00007ffff79cde2d in gtk_tree_view_column_cell_get_size ()
+   from /usr/lib64/libgtk-x11-2.0.so.0
+#15 0x00007ffff79b5ec1 in ?? () from /usr/lib64/libgtk-x11-2.0.so.0
+#16 0x00007ffff79b8c6f in ?? () from /usr/lib64/libgtk-x11-2.0.so.0
+#17 0x00007ffff79b90a6 in ?? () from /usr/lib64/libgtk-x11-2.0.so.0
+#18 0x00007ffff79b9149 in ?? () from /usr/lib64/libgtk-x11-2.0.so.0
+#19 0x00007ffff74fc5a7 in ?? () from /usr/lib64/libgdk-x11-2.0.so.0
+#20 0x00007ffff5e36bad in g_main_context_dispatch ()
+   from /usr/lib64/libglib-2.0.so.0
+#21 0x00007ffff5e36f80 in ?? () from /usr/lib64/libglib-2.0.so.0
+#22 0x00007ffff5e372a2 in g_main_loop_run () from /usr/lib64/libglib-2.0.so.0
+#23 0x00007ffff78c3137 in gtk_main () from /usr/lib64/libgtk-x11-2.0.so.0
+#24 0x000000000040473a in main (argc=2, argv=0x7fffffffe568)
+    at IRCClient.cc:638
++q

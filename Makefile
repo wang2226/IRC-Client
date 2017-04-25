@@ -18,7 +18,8 @@ timer: timer.c
 	gcc timer.c -o timer `pkg-config --cflags --libs gtk+-2.0`
 
 IRCClient: IRCClient.cc
-	g++ -g -o IRCClient IRCClient.cc `pkg-config --cflags --libs gtk+-2.0`
+	#g++ -g -o IRCClient IRCClient.cc `pkg-config --cflags --libs gtk+-2.0`
+	gcc -g -o IRCClient IRCClient.cc `pkg-config --cflags --libs gtk+-2.0`
 
 IRCClientTimer: IRCClientTimer.cc
 	g++ -g -o IRCClientTimer IRCClientTimer.cc `pkg-config --cflags --libs gtk+-2.0`
